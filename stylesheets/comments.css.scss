@@ -1,0 +1,139 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* .comment_partial{ */
+/*     .comment-content{ */
+/*         background-color: $website-grey; */
+/*         padding: 5px; */
+/*         margin-bottom: 10px; */
+/*     } */
+/* } */
+
+div.comment
+{
+  margin: 20px auto 20px auto;
+  width: 960px;
+  min-height: 60px;
+  position: relative;
+  img
+  {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+  }
+  span.edit-delete-popup
+  {
+    height: 55px;
+    width: 100px;
+    position: absolute;
+    left: 850px;
+    top: 22px;
+    div
+    {
+      margin-top : 5px;
+      margin-left: 10px;
+      height: 20px;
+      width: 80px;
+      text-align: center;
+      form
+      {
+        width: 80px;
+        height: 20px;
+        input
+        {
+          width: 80px;
+          height: 20px;
+          font-family: $website-oxygen;
+          background-color: transparent;
+          color: #3e3e3e;
+        }
+        input:hover
+         {
+          cursor: pointer;
+          background-color: $website-grey;
+         }
+      }
+    }
+    div:hover
+    {
+      cursor: pointer;
+      background-color: $website-grey;
+    }
+  }
+  span.edit-delete-popup:not(:focus)
+  {
+    display: none;
+  }
+  div.username-comment
+  {
+    margin-left: 55px;
+    width: 900px;
+    display: inline-block;
+    div.username
+    {
+      margin: 2px 5px 5px auto;
+      height: 20px;
+      color: $website-blue;
+      span.timeago
+      {
+        font-size: 10px;
+        color: #999;
+      }
+      img
+      {
+        height: 20px;
+        width: 20px;
+        float: right;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+      }
+    }
+    div.comment-text
+    {
+      width: 100%;
+      word-break: break-all;
+    }
+    div.form
+    {
+      display: none;
+      width: 900px ;
+      form textarea
+      {
+        width: 900px;
+        height: 50px;
+      }
+      form input , div.cancel
+      {
+        width: 60px;
+        height: 30px;
+      }
+      form input
+      {
+        position: relative;
+        top: 10px;
+        left: 770px;
+        font-family: $website-oxygen;
+        background-color: $website-blue;
+        color: white;
+      }
+      div.cancel
+      {
+        background-color: white;
+        position: relative;
+        left: 842px;
+        top: -21px;
+        text-align: center;
+        line-height: 32px;
+        border: 1px solid white;
+      }
+      form input:hover , div.cancel:hover
+      {
+        cursor: pointer;
+        border: 1px solid $website-grey;
+      }
+    }
+  }
+}

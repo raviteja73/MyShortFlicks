@@ -1,0 +1,46 @@
+<div class="errors hide">
+  <span>1.Enter Proper Email id of the Admin</span>
+  <span>2.Admin should be registered in our website </span>
+</div>
+<div class="awards">
+  <%= render @competition.awards %>
+    <% if @competition.verified and !@competition.lock %>
+      <%= form_for(@competition.awards.build,
+                   remote: true) do |f| %>
+        <div><%= f.hidden_field :competition_id, value: @competition.url_token %></div>
+        <div>
+          <span>
+            <strong>
+                Video:
+            </strong>
+          </span>
+          <span>
+            <%= collection_select(:award, :video_id, @videos, :url_token, :title) %>
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>
+              Position:
+            </strong>
+          </span>
+          <span>
+            <%= f.text_field :position, placeholder: "Should be an integer" %>
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>
+              Comments:
+            </strong>
+          </span>
+          <span>
+            <%= f.text_area :comments, placeholder: "Any comments on this video" %>
+          </span>
+        </div>
+        <div class="giveAward">
+          <%= f.submit "Add Award"%>
+        </div>
+      <% end %>
+    <% end %>
+</div>

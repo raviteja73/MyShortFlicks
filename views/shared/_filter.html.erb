@@ -1,0 +1,49 @@
+
+<div class="filter-div">
+  <span class="genre">
+    <div class="allgenre">
+      <% for tag in Tag.find(:all, order: :name) %>
+          <span>
+            <span>
+              <%= check_box_tag "tags[]", tag.name, (params[:tags].include?(tag.name) unless !params[:tags]), id: "tags_" + tag.name %>
+              <%= label_tag "tags[]", "" , class:"checkboxstylelabel", for: "tags_" + tag.name %>
+            </span>
+            <%= label_tag "tags[]", tag.name.capitalize, for: "tags_" + tag.name %>
+          </span>
+      <% end %>
+    </div>
+  </span>
+  <span class="lang-subtitle">
+    <!-- dont remove  div and class lang-select-style -->
+    <div class="lang-select-style">
+      <%= collection_select(nil, "language", Language.find(:all, order: :name), :name, :name, include_blank: "All", selected: !filter_language ? {} : Language.find(filter_language).name) %>
+    </div>
+    <div class="subtitle">
+        <%= label_tag "subtitles", "Subtitles" %>
+        <%= check_box_tag "subtitles", true, filter_subtitles %>
+        <label class="checkboxstylelabel" for="subtitles"/>
+    </div>
+  </span>
+  <span class="sortby">
+    <div class="text">
+      Sort by
+    </div>
+    <div class="sortoptions">
+      <div>
+        <%= radio_button_tag(:sort, "mini_reviews_count", "mini_reviews_count" == sort_column) %>
+        <%= label_tag(:sort_mini_reviews_count, "Reviews") %>
+      </div>
+      <div>
+        <%= radio_button_tag(:sort, "date_posted_youtube", "date_posted_youtube" == sort_column) %>
+        <%= label_tag(:sort_date_posted_youtube, "Recent") %>
+      </div>
+      <div>
+        <%= radio_button_tag(:sort, "duration", "duration" == sort_column) %>
+        <%= label_tag(:sort_duration, "Duration") %>
+      </div>
+    </div>
+  </span>
+</div>
+<div class="loadbutton">
+  <div id="loadFilterResults">Load</div>
+</div>

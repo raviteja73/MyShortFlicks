@@ -1,0 +1,3 @@
+<p> Please confirm your email by clicking on link below </p>
+<p> <%= link_to "Confirm Email", email_confirmation_url(@user.email_reset_token) %> </p>
+<p> If you're not <%= @user.first_name %> or didn't request verification, you can ignore this email. </p>

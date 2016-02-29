@@ -1,0 +1,46 @@
+  <div class="web-block extrapadding">
+    <div class="block-info">
+
+      <%# image_tag(competition.banner(:banner), alt: "competition icon", class: "standardPic float-left") %>
+
+      <div class="competitiontitle">
+        <h1> <%= link_to competition.name, competition %> </h1>
+      </div>
+      <div class="productionlink">
+        <%= link_to competition.production.name, competition.production %>
+      </div>
+      <div class="endstartres">
+        <div>
+            <strong>Start Date: </strong><%= competition.start_date %>
+        </div>
+        <div class="status">
+          <% if competition.start_date <= Time.now.to_date  and competition.end_date >= Time.now.to_date%>
+              <div class="running">
+                Running
+              </div>
+          <% else %>
+              <div class="notrunning">
+                <% if competition.end_date < Time.now.to_date %>
+                    Ended
+                <% else %>
+                    Will Start on <%= competition.start_date %>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="endstartres">
+        <div>
+          <strong>End Date: </strong><%= competition.end_date %>
+        </div>
+      </div>
+      <div class="endstartres">
+        <div>
+          <strong>Results Date: </strong><%= competition.results_date %>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>

@@ -1,0 +1,19 @@
+<div class="info-content">
+  <div class="errors hide addadminserrrors">
+    <span>1.Enter Proper Email id of the Admin</span> <br/>
+    <span>2.Admin should be registered in our website </span>
+  </div>
+
+  <h2 class="currentadmins"> Current Admins </h2>
+  <div class="admins">
+    <% @admins.each do |a| %>
+      <%= render "admin_roles/production_admin_user", admin: a %>
+    <% end %>
+  </div>
+  <%= form_for(@production.admin_roles.build,
+               remote: true , class:"addadmins", :html=>{:onsubmit=>'return validateAdminEmail();'}) do |f| %>
+    <div><%= f.hidden_field :production_id, value: @production.url_token %></div>
+    <%= f.text_field :user_id, placeholder: "Email..."  %>
+    <%= f.submit "+ Add Admin ", class: "add-admin-btn", onclick: "return validateAdminEmail()" %>
+  <% end %>
+</div>

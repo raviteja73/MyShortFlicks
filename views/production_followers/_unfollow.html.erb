@@ -1,0 +1,6 @@
+<%= form_for(@production.production_followers.find_by_user_id(my_current_user),
+             html: {method: :delete},
+             remote: true
+             ) do |f| %>
+  <%= f.submit "Unfollow" %>
+<% end %>

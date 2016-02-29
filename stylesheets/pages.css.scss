@@ -1,0 +1,122 @@
+// Place all the styles related to the Pages controller here.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@mixin carousel-customized-height($height){
+    position: relative; //to make thumbnails position: absolute
+    z-index: $carousel-z-index;
+    height: $height;
+    width: $website-width;
+    overflow: hidden;
+    li{
+        display: inline;
+    }
+    #carousel-images{
+        height: $height;
+        width: $carousel-wrapper-width;
+        li{
+            display: inline-block;
+            height: $height;
+            width: $website-width;
+            float: left;
+        }
+        img{
+            height: $height;
+            width: $website-width;
+        }
+    }
+}
+
+
+#pages-index, #pages-recent_videos, #pages-production_videos, #pages-shuffle{
+    // For page specific styles
+    #carousel-loggedin{
+        @include carousel-customized-height($carousel-loggedin-height);
+    }
+    #carousel{
+        @include carousel-customized-height($carousel-height);
+    }
+    #carousel-loggedin, #carousel{
+        #carousel-thumbnails{
+            position: absolute;
+            height: $carousel-thumbnail-height + (2*$carousel-thumbnail-border-width);
+            bottom: 5px;
+            right: 5px;
+            /* overflow: hidden; */
+            li{
+                display: inline-block;
+                float: left;
+                height: $carousel-thumbnail-height;
+                width: $carousel-thumbnail-width;
+                border-style: solid;
+                border-width: $carousel-thumbnail-border-width $carousel-thumbnail-border-width/2 $carousel-thumbnail-border-width $carousel-thumbnail-border-width/2;
+                border-color: $white;
+            }
+            .first-carousel-thumbnail{
+                border-top-color: $website-blue;
+                border-bottom-color: $website-blue;
+                border-width: $carousel-thumbnail-border-width $carousel-thumbnail-border-width/2 $carousel-thumbnail-border-width $carousel-thumbnail-border-width;
+            }
+            .last-carousel-thumbnail{
+                border-width: $carousel-thumbnail-border-width $carousel-thumbnail-border-width $carousel-thumbnail-border-width $carousel-thumbnail-border-width/2;
+            }
+            img{
+                @include opacity(0.5);
+                height: $carousel-thumbnail-height;
+                width: $carousel-thumbnail-width;
+                &:hover{
+                    cursor: pointer;
+                    @include opacity(1);
+                }
+            }
+        }
+    }
+}
+
+.submit-video-popup
+{
+  font-size: 14px;
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  border: 2px solid $website-blue;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  z-index: $header-popup-z-index;
+  background-color: $website-background;
+  a
+  {
+    color: white;
+    display: inline-block;
+    line-height: 30px;
+    height: 22px;
+    font-size: 14px;
+    line-height: 22px;
+    width: 160px;
+    margin: 5px 0 5px 0;
+    background-color: $google-color;
+  }
+  border: 2px solid $website-blue;
+}
+
+a.submit-video-link  , span.submit-video-link
+{
+  display: inline-block;
+  cursor: pointer;
+  background-color: $website-orange;
+  height: 22px;
+  font-size: 14px;
+  width: 100px;
+  line-height: 22px;
+  text-align: center;
+  color: $white;
+  margin-left: 170px;
+}
+
+span.submit-video-link
+{
+  margin-left: 230px;
+}

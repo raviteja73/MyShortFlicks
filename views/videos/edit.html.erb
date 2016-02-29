@@ -1,0 +1,5 @@
+<% provide(:title, "Edit #{@video.title}") %>
+<%= render "shared/new_title", text: "Edit Video" %>
+<%= render "videos/form" %>
+<%= link_to "Delete Video", @video, method: :delete, data: { confirm: 'Are you certain you want to delete ?' }, class: "delBtnVideo",style: "margin: 0px;margin-bottom: 20px;margin-left: 10px;" %>
+<%= link_to "Cancel", @video , class: "cancelBtnVideo", style: "margin-bottom: 20px;" %>

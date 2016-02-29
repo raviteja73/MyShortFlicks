@@ -1,0 +1,66 @@
+<%= form_for @production, :html=>{:onsubmit=>'return ValidateProdEditForm();'} , class:"productionEditForm" do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+
+  <div class="new-necessary float-left">
+
+    <%= render "shared/new_content_title", integer: "1",text: "Enter necessary stuff" %>
+    <div class="newField">
+      <%= f.label :name, "Production Name*" %> <br/>
+      <%= f.text_field :name, placeholder: "Production Name" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :mobile, "Mobile(Privacy ensured)*" %> <br/>
+      <%= f.text_field :mobile, placeholder: "Mobile number" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :address, "Address (optional)" %> <br/>
+      <%= f.text_area :address, placeholder: "255 characters..." %>
+    </div>
+
+  </div>
+
+
+  <div class = "new-interesting float-left">
+    <%= render "shared/new_content_title", integer: "2",text: "Add the interesting facts" %>
+    <div class="newField">
+      <%= f.label :description, "Description*" %> <br/>
+      <%= f.text_area :description, placeholder: "Description" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :banner, "Banner(max 1 MB, 960x140)" %> <br/>
+      <%= f.file_field :banner %>
+    </div>
+
+  </div>
+
+
+
+  <div class="new-famous float-right">
+    <%= render "shared/new_content_title", integer: "3",text: "Make it famous" %>
+
+    <div class="newField">
+      <%= f.label :fb_url, "Facebook (optional)" %> <br/>
+      <%= f.text_field :fb_url, placeholder: "Facebook page url" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :google_url, "Google Plus (optional)" %> <br/>
+      <%= f.text_field :google_url, placeholder: "Google page url" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :twitter_url, "Twitter (optional)" %> <br/>
+      <%= f.text_field :twitter_url, placeholder: "Twitter page url" %>
+    </div>
+
+
+    <%= f.submit "POST", class: "postBtnProd" %>
+
+  </div>
+
+<% end %>

@@ -1,0 +1,25 @@
+<%= form_tag email_confirmations_path, :method => :post do %>
+
+    <div class="user-edit">
+      <% if my_current_user.user_authentication %>
+        <div>
+          <span>
+            <%= label_tag :current_password, "Current Password" %>
+          </span>
+          <span>
+            <%= password_field_tag :current_password %>
+          </span>
+        </div>
+    <% end %>
+
+  <div>
+    <span>
+        <%= label_tag :email, "New Email" %>
+    </span>
+    <span>
+      <%= text_field_tag :email, params[:email] %>
+    </span>
+  </div>
+  <div class="saveemailchanges savechanges"><%= submit_tag "Change", data: {disable_with: "Wait.."} %></div>
+  </div>
+<% end %>

@@ -1,0 +1,79 @@
+<%# render "competition_application_forms/form" %>
+<%= form_for @competition_application_form do |f| %>
+
+  <div class="ErrorInCompetitionApply">
+    <%= render 'shared/error_messages', object: f.object  %>
+  </div>
+  <%= f.hidden_field :competition_id, value: @competition.url_token %>
+
+  <div class="competition-apply-form">
+
+      <div class="newField">
+        <span>
+          <%= f.label :video_id, "Video*" %> <br/>
+        </span>
+        <span>
+          <%= collection_select(:competition_application_form, :video_id, @videos, :url_token, :title) %>
+        </span>
+      </div>
+
+      <div class="newField">
+        <span>
+          <%= f.label :team_name, "Team Name*" %> <br/>
+        </span>
+        <span>
+          <%= f.text_field :team_name, placeholder: "Team Name" %>
+        </span>
+      </div>
+
+      <div class="newField">
+        <span>
+            <%= f.label :description, "Detailed Description*" %> <br/>
+        </span>
+        <span>
+          <%= f.text_area :description, placeholder: "Description" %>
+        </span>
+      </div>
+
+      <div class="newField">
+        <span>
+          <%= f.label :mobile, "Mobile*" %> <br/>
+        </span>
+        <span>
+            <%= f.text_field :mobile, placeholder: "Mobile number" %>
+        </span>
+      </div>
+
+      <div class="newField">
+        <span>
+          <%= f.label :alt_mobile, "Alternate Mobile*" %> <br/>
+        </span>
+        <span>
+           <%= f.text_field :alt_mobile, placeholder: "Alternate Mobile number" %>
+        </span>
+      </div>
+
+      <div class="newField">
+        <span>
+            <%= f.label :email, "Email*" %> <br/>
+        </span>
+        <span>
+          <%= f.text_field :email, placeholder: "Email" %>
+        </span>
+      </div>
+
+      <div class="newField">
+        <span>
+          <%= f.label :address, "Address*" %> <br/>
+        </span>
+        <span>
+          <%= f.text_area :address, placeholder: "Address" %>
+        </span>
+      </div>
+
+
+
+      <%= f.submit "POST IT", class: "postBtn" , style: "margin-bottom:20px;margin-top:10px"%>
+  </div>
+
+<% end %>

@@ -1,0 +1,2 @@
+$('#comments').append("<%= escape_javascript(render @comments) %>");
+$('a.load-more-videos').replaceWith("<%= escape_javascript( link_to_next_page @comments, 'Load More', remote: true, class: 'load-more-videos' ) %>");

@@ -1,0 +1,34 @@
+<%= form_tag send_feedback_path, :method => :post do %>
+
+    <div class="feedback-form">
+        <div>
+            <span>
+              <%= label_tag :email, "Email*"  %>
+            </span>
+            <span>
+              <%= text_field_tag :email, nil, placeholder: "Your Email address" %>
+            </span>
+            </div>
+        <div>
+            <span>
+                <%= label_tag :mobile, "Mobile"  %>
+            </span>
+            <span>
+              <%= text_field_tag :mobile, nil, placeholder: "Mobile Number" %>
+            </span>
+        </div>
+
+        <div>
+            <span>
+              <%= label_tag :feedback, "Feedback*"  %>
+            </span>
+            <span>
+              <%= text_area_tag :feedback, nil, placeholder: "Feedback" %>
+            </span>
+        </div>
+
+        <div class="sendfeedback savechanges">
+          <%= submit_tag "Send" %>
+        </div>
+    </div>
+<% end %>

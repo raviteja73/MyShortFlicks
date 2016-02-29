@@ -1,0 +1,48 @@
+<%= div_for comment do %>
+    <%= link_to comment.user do %>
+        <%= image_tag(comment.user.avatar.url(:thumbnail), class: "socialIcon") %>
+    <% end %>
+    <% if my_current_user?(comment.user) %>
+        <span class="edit-delete-popup" tabindex="-1">
+          <div class="edit">
+            Edit
+          </div>
+          <div class="delete">
+            <%= form_for(comment,
+                         html: {method: :delete, data: {confirm: "You sure?"}},
+                         remote: true) do |f| %>
+                <%= f.submit "Delete" %>
+            <% end %>
+          </div>
+        </span>
+    <% end %>
+    <div class="username-comment">
+    <div class="username">
+      <span>
+        <%= link_to comment.user do %>
+            <%= comment.user.first_name %>
+        <% end %>
+      </span>
+      <span class="timeago">
+        <%= time_ago_in_words(comment.created_at) %> ago
+      </span>
+      <% if my_current_user?(comment.user) %>
+          <%= image_tag("edit.png", alt: "settings-icon", class: "icon-img" , id: "commentupdateicon") %>
+      <% end %>
+    </div>
+    <div class="comment-text comment-content">
+      <%= raw(h(comment.content.gsub("\n","#linebreak#")).gsub("#linebreak#","<br/>")) %>
+    </div>
+    <div class="form">
+        <% if my_current_user?(comment.user) %>
+            <%= form_for(comment, remote: true) do |f| %>
+                <%= f.text_area :content %>
+                <%= f.submit "Update" %>
+            <% end %>
+            <div class="cancel">
+               Cancel
+            </div>
+        <% end %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="nav2">
+  <%= link_to "Info", @competition, id: "info" %>
+  <%= link_to "Awards", competition_awards_path(@competition), id: "awards" %>
+  <%= link_to "Videos", competition_applied_videos_path(@competition), id: "comp_app_vid" %>
+  <% if is_production_admin?(@competition.production_id, my_current_user) %>
+    <%= link_to "Applications", competition_applications_path(@competition), id: "appl" %>
+  <% end %>
+</div>

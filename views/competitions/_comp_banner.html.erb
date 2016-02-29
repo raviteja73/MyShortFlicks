@@ -1,0 +1,19 @@
+<div class="comp-prod-banner">
+  <h1 class="cp_show_title"> <%= truncate(@competition.name, length: 65) %> </h1>
+  <% if !@competition.fb_url.blank? %>
+    <%= link_to image_tag("facebook.png", alt: "fb_icon", class: "socialIcon"), @competition.fb_url, target: "_blank" %>
+  <% end %>
+  <% if !@competition.google_url.blank? %>
+    <%= link_to image_tag("google.png", alt: "google_icon", class: "socialIcon"), @competition.google_url, target: "_blank" %>
+  <% end %>
+  <% if !@competition.twitter_url.blank? %>
+    <%= link_to image_tag("twitter.png", alt: "twitter_icon", class: "socialIcon"), @competition.twitter_url, target: "_blank" %>
+  <% end %>
+  <div class="follow-edit-button">
+    <% if my_signed_in? %>
+      <% if is_production_admin?(@competition.production_id, my_current_user) %>
+        <%= link_to "Edit", edit_competition_path(@competition) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

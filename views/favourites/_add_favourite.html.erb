@@ -1,0 +1,5 @@
+<%= form_for(my_current_user.favourites.build,
+             remote: true) do |f| %>
+  <%= f.hidden_field :video_id, value: video.url_token %>
+  <%= f.submit "Add", type: :image, src: "/assets/favourite_outline.png" , title: "Add To Favourites" %>
+<% end %>

@@ -1,0 +1,87 @@
+<% provide(:title, "Edit user") %>
+<h1>Update your profile</h1>
+
+<%= form_for @user, :html=>{:onsubmit=>'return ValidateUserEditForm();'} do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <% if @user_authentication %>
+    <%= render 'shared/error_messages', object: @user_authentication %>
+  <% end %>
+    <div class="user-edit">
+    <div>
+        <span>
+          <%= f.label :first_name, "First Name*" %>
+        </span>
+        <span>
+          <%= f.text_field :first_name %>
+        </span>
+    </div>
+    <div>
+        <span>
+            <%= f.label :last_name, "Last Name" %>
+        </span>
+        <span>
+            <%= f.text_field :last_name %>
+      </span>
+    </div>
+    <div>
+      <span>
+          <%= f.label :gender, "Gender*" %>
+      </span>
+        <span>
+        <%= f.select :gender, options_for_select([ "male", "female", "transgender"])%>
+      </span>
+    </div>
+    <div>
+      <span>
+          <%= f.label :quote, "Quote*" %>
+      </span>
+        <span>
+        <%= f.text_field :quote %>
+      </span>
+    </div>
+
+    <div>
+        <span>
+            <%= f.label :avatar, "Profile Pic(max 1 MB)" %> <br/>
+        </span>
+        <span>
+            <%= f.file_field :avatar %>
+        </span>
+    </div>
+
+
+    <div class="savechanges">
+      <%= f.submit "Save changes"%>
+    </div>
+    <% if @user_authentication %>
+      <div>
+        <span>
+          <%= label_tag :current_password, "Current Password" %>
+        </span>
+        <span>
+          <%= password_field_tag :current_password %>
+        </span>
+      </div>
+    <% end %>
+      <div>
+        <span>
+          <%= f.label :password, "New Password" %>
+        </span>
+        <span>
+            <%= f.password_field :password %>
+        </span>
+      </div>
+      <div>
+        <span>
+          <%= f.label :password_confirmation, "Confirm Password" %>
+        </span>
+        <span>
+          <%= f.password_field :password_confirmation %>
+        </span>
+      </div>
+      <div class="savepassword">
+        <%= f.submit "Save Password",onclick: "return validateNewPassword()"  %>
+      </div>
+    <p><%= link_to "Change Email", new_email_confirmation_path %></p>
+  </div>
+<% end %>

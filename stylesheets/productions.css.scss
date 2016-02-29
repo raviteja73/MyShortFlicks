@@ -1,0 +1,52 @@
+// Place all the styles related to the Productions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.info-content
+{
+  min-height: 500px;
+  overflow: hidden;
+  #production_info
+  {
+    h2
+    {
+      color: $black;
+    }
+    width: 400px;
+    margin-left: 10px;
+  }
+  #description
+  {
+    color: $black;
+    width: 480px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  h2.currentadmins
+  {
+    margin-top: 5px;
+    padding-left: 20px;
+  }
+  form.new_admin_role
+  {
+    padding: 5px;
+    padding-left: 20px;
+    margin-top: 20px;
+     input[type='text']
+     {
+       height: 20px;
+     }
+    input[type='submit']
+    {
+      height: 25px;
+      padding: 2px;
+      margin-left: 5px;
+      background-color: $website-blue;
+      color: $white;
+    }
+  }
+}
+
+div.addadminserrrors
+{
+  padding-left: 20px;
+}

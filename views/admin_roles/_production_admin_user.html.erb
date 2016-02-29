@@ -1,0 +1,9 @@
+<div id = "<%= admin.url_token %>" class="admin_partial">
+  <%= link_to admin.first_name, admin, class: "float-left" %>
+
+  <%= form_for(@production.admin_roles.where(user_id: admin).first,
+               html: {method: :delete, data: {confirm: "Are you sure?"}},
+               remote: true) do |f| %>
+    <%= f.submit " Remove", class: "remBtn"%>
+  <% end %>
+</div>

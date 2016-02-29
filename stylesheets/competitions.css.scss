@@ -1,0 +1,95 @@
+// Place all the styles related to the Competitions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Place all the styles related to the CompetitionApplicationForms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div.awards.form
+{
+  margin-bottom: 50px;
+}
+div.awards > form , div.awards > div
+{
+  margin: 30px auto 30px auto;
+  border: 2px $website-grey solid;
+  width: 550px;
+  background-color: $white;
+  margin-top: 50px;
+  div
+  {
+    width: 412px;
+    margin: 10px auto auto auto;
+    span
+    {
+      vertical-align: text-top;
+      display: inline-block;
+      width: 150px;
+      input , textarea
+      {
+        width: 253px;
+      }
+      textarea
+      {
+        height: 200px;
+      }
+      p
+      {
+        width: 253px;
+        word-wrap: break-word;
+      }
+      select
+      {
+        max-width: 253px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  div.giveAward
+  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    input[type=submit]
+    {
+      height: 30px;
+      font-size: 14px;
+      color: $white;
+      background-color: $website-blue;
+      padding: 0px 10px;
+      float:right;
+    }
+  }
+  div.removeAward
+  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    input[type=submit]
+    {
+      height: 30px;
+      font-size: 14px;
+      color: $white;
+      background-color: $website-red;
+      padding: 0px 10px;
+      float:right;
+    }
+  }
+  a
+  {
+    color: $website-blue;
+  }
+  a:hover
+  {
+    text-decoration: underline;
+  }
+}
+
+.competitions-show
+{
+  padding: 15px;
+}

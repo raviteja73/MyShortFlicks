@@ -1,0 +1,8 @@
+<div class="nav2">
+  <%= link_to "Info", @user, id: "info" %>
+
+  <% if my_current_user?(@user) %>
+    <%= link_to "Favourites", user_favourites_path(@user), id: "fav" %>
+  <% end %>
+
+</div>

@@ -1,0 +1,5 @@
+<%= form_for(my_current_user.production_followers.build,
+             remote: true) do |f| %>
+   <div> <%= f.hidden_field :production_id, value: @production.url_token %> </div>
+  <%= f.submit "Follow" %>
+<% end %>

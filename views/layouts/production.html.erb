@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%= render "shared/layout_head" %>
+  <body id = <%= body_id %> >
+    <%= render "shared/header" %>
+    <div id = "container">
+      <%= render "shared/banner", image: @production.banner.url(:banner) %>
+      <%= render "productions/prod_banner"%>
+      <%= render "productions/nav2"%>
+      <%= yield %>
+    </div>
+    <%= render "shared/footer" %>
+  </body>
+</html>

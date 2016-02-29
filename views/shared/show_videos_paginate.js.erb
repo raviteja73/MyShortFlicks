@@ -1,0 +1,4 @@
+<% video_info %>
+$(".paginate").html("<%= escape_javascript(paginate @videos, left: 1, window: 1, right: 0, remote: true) %>");
+$('.videos').html("<%= escape_javascript(render @videos) %>");
+filter.toggleDisplay();

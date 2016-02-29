@@ -1,0 +1,5 @@
+<%= form_for(my_current_user.mini_reviews.where(video_id: video.id, category: category).first,
+             html: {method: :delete},
+             remote: true) do |f| %>
+  <%= f.submit "#{category}+#{count}".capitalize , class:"unreviewinput"%>
+<% end %>

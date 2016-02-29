@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%= render "shared/layout_head" %>
+  <body id = <%= body_id %> >
+    <%= render "shared/header" %>
+    <div id = "container">
+      <%= render "shared/quote", text: @user.quote %>
+      <%= render "users/user_banner", user: @user %>
+      <%= render "users/nav2"%>
+      <%= yield %>
+    </div>
+    <%= render "shared/footer" %>
+  </body>
+</html>

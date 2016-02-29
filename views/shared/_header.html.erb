@@ -1,0 +1,154 @@
+<header>
+  <nav>
+    <ul>
+      <li> <%= link_to image_tag("home.png", alt: "home_icon") + "Home", root_path %> </li>
+      <li> <%= link_to image_tag("discover.png", alt: "home_discover_icon") + "Discover", discover_path%> </li>
+      <li> <%= link_to image_tag("competition.png", alt: "home_competition_icon") + "Competitions", competitions_path %> </li>
+    </ul>
+
+    <!-- Style this  keep the search Results id as it is .. remove the class social Icon-->
+    <div class="searchbar">
+    <div class="searchtextbox">
+      <%= text_field_tag :q, filter_search, placeholder: "Search Short Films...", class: "searchField" %>
+    </div>
+    <div class="searchicon">
+        <%= image_tag("search.png", alt: "search icon", id: "searchResults", class: "socialIcon") %>
+    </div>
+    </div>
+  </nav>
+
+  <% if my_signed_in? %>
+
+    <div id="header-right-btn-wrapper">
+
+      <div id="header-right-btn">
+        <span> <%= truncate(my_current_user.first_name, length: 15) %> </span>
+      </div>
+
+      <div id="header-right-btn-dropdown">
+        <ul>
+          <li> <%= link_to "My Profile", my_current_user %> </li>
+          <li> <%= link_to "My Favourites", user_favourites_path(my_current_user) %> </li>
+          <li> <%= link_to "Account Settings", edit_user_path(my_current_user) %> </li>
+          <li> <%= link_to "logout", signout_path, method: :delete %> </li>
+        </ul>
+      </div>
+
+    </div>
+</header>
+<div id="signin-popup-overlay">
+</div>
+  <% else %>
+
+    <div id="header-signin-btn-wrapper">
+      <span id="header-signin-btn" class="button">Login</span>
+    </div>
+
+</header>
+
+
+<div id="signin-popup-overlay">
+</div>
+
+
+<div id="login-popup-scope">
+
+  <div id="signin-popup">
+
+    <div class="popup-close">X</div>
+    <% if flash[:error] %>
+      <span class="errors signin_errors"> <%= flash[:error] %> </span> <br/>
+    <% end %>
+    <span>Connect Using</span>
+
+    <div id="popup-social-icon">
+        <%= link_to "Connect with Facebook", "/auth/facebook", class: "socialNetworkConnect fbConnect" %>
+        <%= link_to "Connect with Google +", "/auth/google_oauth2", class: "socialNetworkConnect googleConnect" %>
+    </div>
+
+    <span>or login using your email</span>
+
+    <%= form_for(:session, url: my_sessions_path, :html => {:onsubmit =>'return ValidateForm();'}) do |f| %>
+        <%= f.text_field :email, placeholder: "email address" %>
+        <%= f.password_field :password, placeholder: "password" %>
+
+      <div id="forgot-sign">
+        <%= link_to "forgot password?", new_password_confirmation_path %>
+        <%= f.submit "Login"%>
+      </div>
+
+    <% end %>
+
+    <div id="join-now">
+      <span>not a member? </span> <span id="join-now-two">join now</span>
+    </div>
+
+  </div>
+
+  <div id="signup-popup">
+
+    <div class="popup-close">X</div>
+
+    <span>Enter your details</span>
+
+
+    <%= form_for(@user, html: {class: "validateThis"}) do |f| %>
+      <%= fields_for @user_authentication do |a| %>
+        <br/>  <span class="errors signup_errors">
+        <% if flash[:signup_error] %>
+          <span class="popup_signup_error"> <%= flash[:signup_error] %> </span>
+        <% end %>
+        </span>
+
+        <%# render 'shared/error_messages', object: f.object %>
+        <%# render 'shared/error_messages', object: a.object %>
+
+          <%= f.text_field :first_name, placeholder: "first name" %>
+
+        <div id="popup-gender-icons">
+          <div>
+            Gender
+          </div>
+          <label>
+            <%= f.radio_button :gender, 'male', :checked => true %>
+            <%= image_tag("male.png", alt: "male_icon", class: "icon-img" , title:"Male") %>
+          </label>
+          <label>
+            <%= f.radio_button :gender, 'female' %>
+            <%= image_tag("female.png", alt: "female_icon", class: "icon-img" , title:"Female") %>
+          </label>
+          <label>
+            <%= f.radio_button :gender, 'transgender' %>
+            <%= image_tag("transgender.png", alt: "transgender_icon", class: "icon-img" , title:"Transgender") %>
+          </label>
+        </div>
+
+          <%= a.text_field :email, placeholder: "email address" %>
+          <%= a.password_field :password, placeholder: "password" %>
+          <%= a.password_field :password_confirmation, placeholder: "confirm password" %>
+
+      <% end %>
+
+      <%= f.submit "Sign Up",  data: { disable_with: "Wait.."} %>
+
+    <% end %>
+    <div id="already-signed">
+      <span>Already signed up? </span><span id="login-one">Login here</span>
+    </div>
+
+    <div class="agreementBeforeSignUp">
+      By clicking Sign Up, you agree to our <%=link_to "Terms" , terms_path %> and that you have read our <%= link_to "Data Use Policy" , privacy_path%>, including our Cookie Use.
+    </div>
+  </div>
+
+</div>
+
+<% end %>
+<% if flash[:notice] %>
+  <div style="width: 960px; margin: auto ; height: 0 ; position: relative">
+    <div id = "web-notice">
+        <%= flash[:notice] %>
+        <span id = "close"><b>X</b></span>
+    </div>
+  </div>
+<% end %>

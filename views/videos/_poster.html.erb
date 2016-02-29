@@ -1,0 +1,176 @@
+<!DOCTYPE html><html><head>
+    <!-- Webmaker metas -->
+    
+	<meta content="movieposter" name="webmaker:tags">
+    
+
+    <!--
+        Prior Knowledge
+        ***************
+        If might find it useful to complete the 'Keep Calm Poster' before attempting this project.
+
+        What you'll Learn
+        ******************
+        - You'll be introduced to some new html tags for lists, quotes and paragraphs and be editing these.
+        - You'll be introduced to html entities (special characters that you cant find on your keyboard).
+        - You'll learn how to set an image to be the background.
+        - You'll learn about to make text important with the <strong> tag.
+        - You'll learn how to tweak a text shadow.
+
+        
+        Tasks
+        ****************
+        Task 1) Change the list of actors.
+        Task 2) Change the quotes and ratings the movie got.
+        Task 3) Change the Movie title and subtitle.
+        Task 4) Add the producer, writer and director of the movie.
+        Task 5) Tweak the text shadow on the poster.
+    -->
+  
+    <!-- This is the title of the page - notice how what's written here appears at the top of the browser window -->
+    <title>Poster</title>
+    
+    
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <section>
+
+
+        <ul class="actors">
+            <li>Steve Smith</li>
+            <li>Jane Doe</li>
+            <li>Brian Coxington</li>
+            <li>Dave Doe</li>
+        </ul>
+
+       
+
+        <!--
+            TASK 3)  Change the Movie title and subtitle.
+            ****************************************
+            The <h1> is a heading tag and as it is the most important heading it should be your film name.
+            Try changing both the title and subtitle of your movie.
+        -->
+        <h1><%=video.title%></h1>
+        
+        <h2><%=video.quote%></h2>
+
+
+        <!--
+            Inside the bottom footer we have a couple of paragraphs of text which state people involved in the film
+            Anything that appears in <strong> tag is defined as 'important'.  The default styling for <strong> is to make text bold but you can
+            see in the CSS that we've also made the text slighly larger.
+            
+            Task 4) - Add the producer, writer and director of the movie.
+            **************************************************************
+            Add another paragraph in the footer listing the 'Producer', 'Writer' and 'Director' of the movie. Make sure you make the names important with <strong> tags.
+            It should say something like "Produced by {name} Story by {name} Directed by {name}"
+            
+        -->
+
+
+         <footer class="credits">
+
+            <p> <strong>Studio Name pictures</strong> and <strong>Producers</strong> present a <strong>Director</strong> film <strong>Actor 1</strong> <strong>Actor 2</strong>  in <strong>"Movie title"</strong></p>
+            <p> Music by <strong>The Musician</strong> Costume design by <strong>Designer name</strong> Edited by <strong>Editors name</strong> Production design by <strong>Designers name</strong></p>
+            <p> Director of photography <strong>Cinematogorapers name</strong> Executive producer <strong>Executive Producer 1</strong> </p>
+          
+        </footer>
+
+     </section>
+    </div>
+
+    <style>
+    /*
+        We are now inside a <style> tag.  Everything inside a <style> tag is called CSS (Cascading Style Sheets) and is used to define the look and feel of the webpage.
+        Notice how the comments are written slightly differnt in CSS compared to HTML using different characters at the beginning and end of a comment.
+    */
+
+    body {
+        background-color:#051c1c;
+        background-image:url("http://farm9.staticflickr.com/8502/8295889638_8eb1312c8e_o.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: top center;
+        color:white;
+        font-family:'Trebuchet MS', sans-serif;  
+        text-align:center;     
+        padding:0; 
+    }
+    .wrapper {
+        margin:70px auto 30px;
+        max-width:850px;
+        padding:0px;
+        position: relative;
+        /*
+            Task 5) - Tweak the text shadow on the poster.
+            **********************************************
+            Below is the css for text shadow. The values are for x-offset, y-offset, blur and then colour.
+            Try changing the values to see how it effects the text shadow on the poster...
+        */
+        text-shadow: 1px 1px 4px black;
+    }
+    h1 , h2 {
+        font-family:georgia, serif;
+        font-style: italic;
+        font-weight: normal;
+    }
+    h1 {
+        font-size:116px;
+        letter-spacing: 2px;
+        margin-top:50px;
+        margin-bottom:0;
+        line-height: 1em;
+    }
+    h2 {
+        margin-top:30px;
+        margin-bottom:100px;  
+    }
+    .actors {
+        list-style-type: none;
+      
+        text-transform: uppercase;
+        font-size: 20px;
+        margin:0 0 40px 0;
+    }
+    .actors li {
+        display: inline-block;
+        margin:0 20px;
+    }
+
+    blockquote {
+        display: inline-block;
+        width: 28%;
+        margin:0 2%;
+        font-size: 20px;
+    }
+    blockquote .star {
+        font-size: 40px;
+        display: block;
+    }
+    blockquote footer {
+        display: block;
+        font-size: 80%;
+    }
+    
+    .credits {
+        text-transform: uppercase;
+        font-size:10px;
+    }
+    .credits strong {
+         font-size:17px;
+    }
+      
+   /*
+      Task 6) - Pat yourself on the back!
+            **********************************************
+            If you've gotten to this point, you should now have a fully customised and beautiful movie poster - congratulations! We hope this Starter Make has been useful, but if something is missing or unclear, let us know! Thanks again - it's been fun.
+        */
+    </style>
+
+</body></html>

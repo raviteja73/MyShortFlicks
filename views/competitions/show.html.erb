@@ -1,0 +1,42 @@
+<%= provide(:title, @competition.name) %>
+<% if Time.now.to_date >= @competition.start_date %>
+
+  <% if my_signed_in? %>
+
+    <% if is_production_admin?(@competition.production_id, my_current_user) %>
+      <% if @competition.verified and !@competition.lock%>
+        <%= link_to "Results", competition_declare_path(@competition) , class:"Results-Competition"  %>
+      <% end %>
+    <% else %>
+      <% if (@competition.verified and (Time.now.to_date <= @competition.end_date) and !@competition.lock) %>
+         <%= link_to "Apply", competition_apply_path(@competition) ,class:"Results-Competition" %>
+      <% end %>
+    <% end %>
+
+  <% else %>
+
+    <% if Time.now.to_date < @competition.end_date %>
+      <span class="dummy-popup Results-Competition"> Apply </span>
+    <% end %>
+
+  <% end %>
+
+<% end %>
+
+<div class="info-content competitions-show">
+<b>Production :</b> <%= link_to @competition.production.name, @competition.production %> <br/>
+<br/>
+<b>Start date :</b> <%= @competition.start_date %> <br/>
+<br/>
+<b>End date :</b> <%= @competition.end_date %> <br/>
+<br/>
+<b>Results date :</b> <%= @competition.results_date %> <br/>
+  <hr/>
+<br/>
+<b>Description :</b> <%= raw(h(@competition.description.gsub("\n","#linebreak#")).gsub("#linebreak#","<br/>")) %> <br/>
+<br/>
+  <hr/>
+<b>Prizes :</b> <%= raw(h(@competition.prizes.gsub("\n","#linebreak#")).gsub("#linebreak#","<br/>")) %> <br/>
+<br/>
+<b>Rules :</b> <%= raw(h(@competition.rules.gsub("\n","#linebreak#")).gsub("#linebreak#","<br/>")) %>
+</div>

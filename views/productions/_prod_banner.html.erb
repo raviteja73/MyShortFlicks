@@ -1,0 +1,30 @@
+<div class="comp-prod-banner">
+  <h1 class="cp_show_title"> <%= truncate(@production.name, length: 65) %> </h1>
+  <% if !@production.fb_url.blank? %>
+    <%= link_to image_tag("facebook.png", alt: "fb_icon", class: "socialIcon"), @production.fb_url, target: "_blank" %>
+  <% end %>
+  <% if !@production.google_url.blank? %>
+    <%= link_to image_tag("google.png", alt: "google_icon", class: "socialIcon"), @production.google_url, target: "_blank" %>
+  <% end %>
+  <% if !@production.twitter_url.blank? %>
+    <%= link_to image_tag("twitter.png", alt: "twitter_icon", class: "socialIcon"), @production.twitter_url, target: "_blank" %>
+  <% end %>
+  <div class="followers comp-prod-status float-right"> <span id="followers_count"> <%= @production.production_followers_count %> </span> Followers</div>
+  <div class="follow-edit-button">
+    <% if my_signed_in? %>
+      <% if is_production_admin?(@production.id, my_current_user) %>
+        <%= link_to "Edit", edit_production_path(@production) %>
+      <% else %>
+        <div id="follow_form">
+          <% if @production.following?(my_current_user) %>
+            <%= render 'production_followers/unfollow' %>
+          <% else %>
+            <%= render 'production_followers/follow' %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <span class="dummy-popup" class="button">follow</span>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<% provide(:title, "Edit #{@production.name}") %>
+<%= render "shared/new_title", text: "Edit Production" %>
+<%= render "productions/form" %>
+
+<%# link_to "+ Add Admins", production_admins_path(@production), class: "new-admin" %>
+
+<%= link_to "Delete Production", @production, method: :delete, data: { confirm: 'Are you certain you want to delete ?' }, class: "delBtnProd" %>
+<%= link_to "cancel", @production, class:"cancelBtnProd" %>

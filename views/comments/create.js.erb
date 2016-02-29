@@ -1,0 +1,10 @@
+/* Replace the count of comments */
+$("#comments_count").html("<%= @video.comments_count %>");
+
+/* Add the new comment to the bottom of the comments list */
+$("#comments").prepend("<%= escape_javascript(render(@comment)) %>");
+
+$("#comment_<%= @comment.id %>").effect("highlight", {}, 1000);
+
+/* Reset the comment form */
+$("#new_comment")[0].reset();

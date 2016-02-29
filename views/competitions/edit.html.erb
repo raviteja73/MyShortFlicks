@@ -1,0 +1,5 @@
+<% provide(:title, "Edit #{@competition.name}") %>
+<%= render "shared/new_title", text: "Edit Competition" %>
+<%= render "competitions/form" %>
+<%= link_to "Delete Competition", @competition, method: :delete, data: { confirm: 'Are you certain you want to delete?' }, class: "delBtnProd" %>
+<%= link_to "Cancel", @competition , class:"cancelBtnComp" %>

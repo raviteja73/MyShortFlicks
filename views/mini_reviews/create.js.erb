@@ -1,0 +1,1 @@
+$(".<%= @video.url_token %> #<%= @mini_review.category %>Review").html('<%=  escape_javascript(render "mini_reviews/unreview", video: @video, category: @mini_review.category, count: @video.mini_reviews.where("mini_reviews.category = ?", @mini_review.category).count) %>');

@@ -1,0 +1,39 @@
+<head>
+  <meta name="google-site-verification" content="Ibb5Fh4bGOuMOWAl-x6MUO6oy35KEFpT8sCj0suEmB4" />
+  <meta name="google-site-verification" content="NSKXnY5DJb_D_06qof7zMw6CMohgHjIAAYrrpx6IaAY" />
+  <meta charset="UTF-8">
+
+  <!-- for Facebook -->
+  <meta property="og:title" content= "My Short Flicks <%= yield(:title) %>" />
+  <meta property="og:type" content="video" />
+  <!-- <meta property="og:image" content="" /> -->
+  <meta property="og:url" content="<%= request.original_url %>" />
+  <meta property="og:description" content="Login to My Short Flicks and access india's largest collection of short films, join and participate in competitions and meet like minded movie addicts @myshortflicks" />
+  <meta property="fb:admins" content="anush.fb"/>
+  <meta property="fb:app_id" content="279453122204421" />
+
+   <!-- for Google  -->
+  <meta name="author" content="" />
+  <meta name="copyright" content="" />
+  <meta name="application-name" content="My Short Flicks" />
+  <meta name="description" content="Login to My Short Flicks and access india's largest collection of short films, join and participate in competitions and meet like minded movie addicts @myshortflicks" />
+  <meta name="keywords" content="short films,shortfilms,videos,horror,comedy,thriller,anime,animation,short movies,small movies,short film india,short film hindi,short film telugu" />
+
+  <!-- for Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content= "My Short Flicks <%= yield(:title) %>" />
+  <meta name="twitter:description" content="Login to My Short Flicks and access india's largest collection of short films, join and participate in competitions and meet like minded movie addicts @myshortflicks" />
+  <meta name="twitter:image" content="" />
+
+
+  <title>My Short Flicks <%= yield(:title) %> </title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!-- Google fonts -->
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Quicksand|Oxygen|Comfortaa:700,400" %>
+  <!-- Till here -->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>

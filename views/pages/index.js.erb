@@ -1,0 +1,4 @@
+<% video_info %>
+$('.videos').append("<%= escape_javascript(render @videos) %>");
+$('a.load-more-videos').replaceWith("<%= escape_javascript( link_to_next_page @videos, 'Load More', remote: true, class: 'load-more-videos' ) %>");
+filter.toggleDisplay();

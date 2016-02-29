@@ -1,0 +1,168 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#start-prod{
+    height: 30px;
+    line-height: 30px;
+    a{
+        float: right;
+        font-size: 16px;
+        background-color: $website-orange;
+        padding: 0 5px 0 5px;
+    }
+    /* color: $black; */
+}
+
+div.password-errors
+{
+  margin-left: 273px;
+  width: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div.password-edit
+{
+  width: 960px;
+  margin-top: 50px;
+  div
+  {
+    width: 412px;
+    margin: 10px auto auto auto;
+    span
+    {
+      display: inline-block;
+      width: 150px;
+      input , textarea
+      {
+        width: 253px;
+      }
+      textarea
+      {
+        height: 200px;
+      }
+    }
+  }
+  div.password-edit-button
+  {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    height: 30px;
+    input[type=submit]
+    {
+      height: 30px;
+      font-size: 14px;
+      color: $white;
+      background-color: $website-blue;
+      padding: 0px 10px;
+      float:right;
+    }
+  }
+}
+div.feedback-form
+{
+  width: 960px;
+  margin-top: 50px;
+  div
+  {
+    width: 412px;
+    margin: 10px auto auto auto;
+    span
+    {
+      display: inline-block;
+      width: 150px;
+      input , textarea
+      {
+        width: 253px;
+      }
+      textarea
+      {
+        height: 200px;
+      }
+    }
+  }
+  div.sendfeedback
+  {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    height: 30px;
+    input[type=submit]
+    {
+      height: 30px;
+      font-size: 14px;
+      color: $white;
+      background-color: $website-blue;
+      padding: 0px 10px;
+      float:right;
+    }
+  }
+}
+
+div.user-edit
+{
+  margin-top: 10px;
+  div
+  {
+    margin: 10px 0px 0px 0px;
+    span
+    {
+      display: inline-block;
+      width: 150px;
+      input , textarea
+      {
+        width: 253px;
+      }
+      textarea
+      {
+        height: 200px;
+      }
+    }
+  }
+  div.savechanges
+  {
+    margin-top: 20px;
+    margin-left: 292px;
+    margin-bottom: 40px;
+    input[type=submit]
+    {
+      height: 30px;
+      font-size: 14px;
+      color: $white;
+      background-color: $website-blue;
+      padding: 0px 10px;
+    }
+  }
+  div.sendfeedback
+  {
+    margin-left: 358px;
+  }
+  div.saveemailchanges
+  {
+    margin-top: 20px;
+    margin-left: 256px;
+  }
+  div.passwordreset
+  {
+    margin-left: 193px;
+  }
+  div.savepassword
+   {
+     margin-left: 280px;
+     margin-bottom: 40px;
+     input[type=submit]
+     {
+       height: 30px;
+       font-size: 14px;
+       color: $white;
+       background-color: $website-blue;
+       padding: 0px 10px;
+     }
+   }
+  p
+  {
+    font-size: 14px;
+     color: $website-blue;
+    margin-bottom: 30px;
+  }
+}

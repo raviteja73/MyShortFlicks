@@ -1,0 +1,6 @@
+<% if @award.errors.count > 0 %>
+   $(".errors").show();
+<% else %>
+   $(".awards").append("<%= escape_javascript(render @award) %>")
+   $("input[type=text]").val("");
+<% end %>

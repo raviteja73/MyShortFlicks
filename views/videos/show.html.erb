@@ -1,0 +1,168 @@
+<% provide(:title, @video.title) %>
+<% video_info_show(@video) %>
+<% if @video.quote %>
+  <%= render "shared/quote", text: @video.quote %>
+<% end %>
+
+<div class="<%= @video.url_token %>">
+<div class="shortfilm-container">
+  <div class="title">
+    <h1>
+      <%= @video.title %>
+    </h1>
+    <div class="edit">
+      <% if my_signed_in? %>
+          <% if is_production_admin?(@video.production_id, my_current_user) %>
+              <%= link_to "Edit", edit_video_path(@video) %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+  <span class="video-container">
+    <%= image_tag "https://i.ytimg.com/vi/" + @video.youtube_url + "/hqdefault.jpg", alt: "youtube_url", class: "toReplaceImageshow", id: @video.youtube_url %>
+    <div class="blue-strip-div">
+      <div class="blue-stripshow">
+          <div class="language-subtitle">
+            <%= @video.language.name %>
+            <% if @video.subtitles %>(+subs)
+            <%end%>
+          </div>
+          <div class="filmduration">
+            <%= @video.duration %>
+          </div>
+        </div>
+      <%= image_tag("play_big.png" , class:"play-imageshow") %>
+    </div>
+  </span>
+  <span class="other-container">
+    <!--<div class="prod-name">
+      <div class="production-name">
+        <%=link_to @video.production.name, @video.production if @video.production.name %>
+      </div>
+    </div>-->
+    <div class="genretags">
+        <%= image_tag("tags.png", alt: "Tag icon", class: "tmp-img") %>
+        <span> <% @video.tags.each do |tag| %>
+          <%= tag.name.titlecase %>
+        <% end %>
+        </span>
+    </div>
+
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div class="g-plusone" data-annotation="inline" data-width="370" data-href="<%= "http://www.myshortflicks.com/videos/" + @video.url_token %>"></div>
+
+    <div class="fb-like">
+        <div class="fb-like" data-href="<%= "http://www.myshortflicks.com/videos/" + @video.url_token %>" data-width="370" data-layout="standard" data-action="like" data-show-faces="true" data-share="true" ></div>
+    </div>
+
+    <div class="favorite-div">
+      <!-- <span>Social Share Icons</span> -->
+      <div class="favorite favourite">
+          <% if my_signed_in? %>
+            <% if @user_favs[@video.id] %>
+              <%= render "favourites/remove_favourite", video: @video %>
+            <% else %>
+              <%= render "favourites/add_favourite", video: @video %>
+            <% end %>
+          <% else %>
+            <%= image_tag "favourite_outline.png", class: "dummy-popup" , title:"Add To Favourites" %>
+          <% end %>
+      </div>
+    </div>
+    <div class="reviews">
+      <div class="minireviewtext">Mini Review</div>
+      <% if my_signed_in? %>
+
+        <div class="tworeviewbox">
+            <div id="actingReview">
+              <% if @user_review[@video.id]["acting"] %>
+                <%= render "mini_reviews/unreview", video: @video, category: "acting", count: @counts[@video.id]["acting"] %>
+              <% else %>
+                <%= render "mini_reviews/review", video: @video, category: "acting", count: @counts[@video.id]["acting"] %>
+              <% end %>
+            </div>
+            <div id="dialoguesReview">
+                <% if @user_review[@video.id]["dialogues"] %>
+                    <%= render "mini_reviews/unreview", video: @video, category: "dialogues", count: @counts[@video.id]["dialogues"] %>
+                <% else %>
+                    <%= render "mini_reviews/review", video: @video, category: "dialogues", count: @counts[@video.id]["dialogues"] %>
+                <% end %>
+            </div>
+        </div>
+        <div class="tworeviewbox">
+          <div id="storyReview">
+            <% if @user_review[@video.id]["story"] %>
+                <%= render "mini_reviews/unreview", video: @video, category: "story", count: @counts[@video.id]["story"] %>
+            <% else %>
+                <%= render "mini_reviews/review", video: @video, category: "story", count: @counts[@video.id]["story"] %>
+            <% end %>
+          </div>
+          <div id="directionReview">
+                <% if @user_review[@video.id]["direction"] %>
+                    <%= render "mini_reviews/unreview", video: @video, category: "direction", count: @counts[@video.id]["direction"] %>
+                <% else %>
+                    <%= render "mini_reviews/review", video: @video, category: "direction", count: @counts[@video.id]["direction"] %>
+                <% end %>
+          </div>
+        </div>
+        <div class="tworeviewbox">
+          <div id="musicReview">
+                <% if @user_review[@video.id]["music"] %>
+                    <%= render "mini_reviews/unreview", video: @video, category: "music", count: @counts[@video.id]["music"] %>
+                <% else %>
+                    <%= render "mini_reviews/review", video: @video, category: "music", count: @counts[@video.id]["music"] %>
+                <% end %>
+            </div>
+            <div id="editingReview">
+                <% if @user_review[@video.id]["editing"] %>
+                    <%= render "mini_reviews/unreview", video: @video, category: "editing", count: @counts[@video.id]["editing"] %>
+                <% else %>
+                    <%= render "mini_reviews/review", video: @video, category: "editing", count: @counts[@video.id]["editing"] %>
+                <% end %>
+            </div>
+        </div>
+      <% else %>
+          <div class="tworeviewbox">
+            <div class="dummy-popup"> Acting+<span id = "acting_count"><%= @counts[@video.id]["acting"] %> </span> </div>
+            <div class="dummy-popup"> Dialogues+<span id="dialogues_count"><%= @counts[@video.id]["dialogues"] %> </span></div>
+          </div>
+          <div class="tworeviewbox">
+            <div class="dummy-popup"> Story+<span id="story_count"><%= @counts[@video.id]["story"] %> </span></div>
+            <div class="dummy-popup"> Direction+<span id="direction_count"><%= @counts[@video.id]["direction"] %> </span></div>
+          </div>
+          <div class="tworeviewbox">
+            <div class="dummy-popup"> Music+<span id="music_count"><%= @counts[@video.id]["music"] %> </span> </div>
+            <div class="dummy-popup"> Editing+<span id="editing_count"><%= @counts[@video.id]["editing"] %> </span> </div>
+          </div>
+      <% end %>
+    </div>
+  </span>
+</div>
+
+
+<h2 class="cp_show_title">Production</h2>
+<p class="productionlink">   <%=link_to @video.production.name, @video.production if @video.production.name %></p>
+
+ <h2 class="cp_show_title">Description</h2>
+<p> <%= raw(h(@video.description.gsub("\n","#linebreak#")).gsub("#linebreak#","<br/>")) %> </p>
+
+<h2 class="cp_show_title">Comments (<span id="comments_count"> <%= @video.comments_count %> </span>)</h2>
+<% if my_signed_in? %>
+  <%= form_for(Comment.new,
+               remote: true) do |f| %>
+    <div> <%= f.hidden_field :video_id, value: @video.url_token %></div>
+    <div> <%= f.text_area :content, placeholder: "your valuable comment..."  ,class: "maincommenttextarea"%> </div>
+    <%= f.submit "Comment", id: "comment-post"  %>
+  <% end %>
+<% else %>
+  <%= text_area_tag nil , nil , placeholder:"your valuable comment..." , class:"maincommenttextarea" %>
+  <span class="dummy-popup">Comment</span>
+<% end %>
+<div class="clear-float"></div> <!-- clearing float as comment-post is float right -->
+<div id="comments">
+  <%= render @comments %>
+</div>
+<div class="load-more">
+  <%= link_to_next_page @comments, "Load More", remote: true, class: "load-more-videos" %>
+</div>
+</div>

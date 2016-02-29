@@ -1,0 +1,8 @@
+<div class="filterEffect <%= video.language.name %> <%= video.subtitles %>
+     <% video.tags.each do |tag| %>
+       <%= tag.id %>
+     <% end %> " >
+  <%= div_for video do %>
+    <%= video.title %>
+  <% end %>
+</div>

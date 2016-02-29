@@ -1,0 +1,217 @@
+.blue
+{
+    background-color:blue;
+}
+#video_banner{
+	height:240px;
+	width:960px;
+background-color: #CCC;
+}
+#video_banner #video{
+	position:relative;
+	float:left;
+	margin:5px;
+	left:2px;
+}
+#video_banner #video img {
+	width:300px;
+	
+}
+#video_banner #head1{
+	width:600px;
+	position:relative;
+	float:left;
+margin-top:5px;
+
+}
+
+#video_banner #head1 #title{
+	position:relative;
+	float:left;
+}
+
+#video_banner #head1 #user_details #user_image{
+	position:relative;
+	float:left;
+margin-left:25px;
+}
+#video_banner #head1 #user_details #user_image img {
+		width:30px;
+	height:30px;
+	
+}
+#video_banner #head1 #user_details #user_name {
+	position:relative;
+	float:left;
+	margin-left:5px;
+}
+
+#video_banner #head1 #genre_details {
+	
+}
+
+#video_banner #head1 #genre_details #genre_icon img{
+
+	width:30px;
+	height:30px;
+	margin-left:20px;
+	position:relative;
+	float:left;
+}
+
+#video_banner #head1 #genre_details #genre_list div[id^='genre-']{
+	position:relative;
+	float:left;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+
+#video_banner #head2 {
+width:600px;
+	position:relative;
+	float:left;
+
+}
+#video_banner #head2 #rating_icon img{
+	width:50px;
+	height:50px;
+	position:relative;
+	float:left;
+	margin:10px;
+	margin-right:50px;
+}
+#video_banner #head2 #user_rating {
+	position:relative;
+	float:left;
+	margin:10px;
+	margin-right:50px;
+}
+#video_banner #head2 #awards{
+
+}
+#video_banner #head2 #awards div[id^='award-'] img{
+	width:50px;
+	height:50px;
+	position:relative;
+	float:right;
+	
+	margin:10px;
+}
+	
+#video_banner #head3 {
+	width:600px;
+	position:relative;
+	float:left;
+
+}
+#video_banner #head3 #heart img,#video_banner #head3 #back img,#video_banner #head3  #socialfeeds #fb img,#video_banner #head3 #socialfeeds #tweet img,#video_banner #head3 #socialfeeds #google img {
+	position:relative;
+	float:left;
+ width:50px;
+ height:50px;
+ margin-left:40px;
+}
+
+#video_banner #head4{
+	width:600px;
+	position:relative;
+	float:left;
+}
+#video_banner #head4 #review_video #review_name{
+	position:relative;
+	float:left;
+	margin:20px;
+}
+#video_banner #head4 #review_video  table{
+	border-spacing:50px 10px;
+	
+}
+#video_banner #head4 #review_video table button{
+	width:100px;
+}
+#description {
+	
+width:500px;
+}
+#description #heading{
+
+}
+#description #content{
+margin-top:5px;
+}
+#team {
+	
+	position:absolute;
+	top:280px;
+	left:600px;
+	
+}
+#team  table{
+	
+width:200;
+border-collapse:separate;
+border-spacing:4px 4px;
+}
+
+#team  tr{
+position:relative;
+margin-top:2px;
+margin-bottom:2px;
+}
+#team td{
+width:100px;
+position:relative;
+
+}
+/*comments*/
+#video_comments #comment_list{
+position:relative;
+float:left;
+width:500px;
+display:none;
+}
+
+#video_comments #comment_list div[id*='comment-']{
+clear:both;
+
+margin-top:5px;
+margin-bottom:5px;
+padding:10px 40px; 
+background:#dddddd;
+height:55px;
+border-radius:40px;
+}
+/*comment user image*/
+#video_comments #comment_list div[id*='comment-'] img{
+position:relative;
+float:left;
+margin:5px;
+}
+#video_comments #comment_list div[id*='comment-'] #comment{
+left:70px;
+margin-top:5px;
+margin-left:5px;
+
+}
+
+#video_comments #comment_list #comment_user {
+margin-top:5px;
+margin-bottom:5px;
+
+padding:5px 20px; 
+background:#dddddd;
+height:30px;
+border-radius:40px;
+}
+/*enter comment*/
+#video_comments #comment_list #comment_user input {
+
+	border-radius:10px;
+	text-wrap:none;
+	height: 22px;
+	width: 460px;
+	padding:10px;
+	 background-color: #CCC;
+	 outline:none;
+}

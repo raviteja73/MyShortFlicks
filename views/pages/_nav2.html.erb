@@ -1,0 +1,22 @@
+<div class="nav2">
+  <%= link_to "Trending", root_path, id: "trend" %>
+  <%= link_to "Recent", recent_videos_path, id: "recent" %>
+  <%= link_to "Shuffle", shuffle_path, id: "shuffle" %>
+  <% if my_signed_in? %>
+    <%= link_to "Production videos", production_videos_path, id: "production_vid" %>
+  <% end %>
+
+  <% if my_signed_in? %>
+    <% if AdminRole.where(user_id: my_current_user).count > 0 %>
+      <%= link_to "Submit Video", new_video_path ,class:"submit-video-link" %>
+    <% else %>
+      <%= link_to "Submit Video", new_production_path ,class:"submit-video-link"%>
+    <% end %>
+  <% else %>
+    <span class="dummy-popup submit-video-link">Submit Video</span>
+  <% end %>
+  <!-- keep this collection_select as div and also dont remove these two classes -->
+  <div class="lang-select-style langCache">
+    <%= collection_select(nil, "language", Language.find(:all, order: :name), :name, :name, include_blank: "All", selected: cookies[:language]) %>
+  </div>
+</div>

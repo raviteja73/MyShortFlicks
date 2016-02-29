@@ -1,0 +1,10 @@
+<%= provide(:title, "#{@production.name} competitions") %>
+<h1 class="cp_show_title"> Competitions </h1>
+<% if is_production_admin?(@production.id, my_current_user) %>
+  <%= link_to "Start Competition", new_competition_path, class: "start-new-prod" %>
+<% end %>
+<% if @production.competitions.count != 0 %>
+  <%= render @production.competitions %>
+<% else %>
+  <h2>No Competitions</h2>
+<% end %>

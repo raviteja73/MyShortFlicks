@@ -1,0 +1,1433 @@
+//might be required
+$white: rgb(255,255,255);
+$black: rgb(0,0,0);
+$red: rgb(255,0,0);
+$green: rgb(0,255,0);
+$blue: rgb(0,0,255);
+
+$facebook-color: rgb(59,89,152);
+$google-color: rgb(221,75,57);
+
+$website-yellow: rgb(255,228,181);
+$website-blue: rgb(112,177,219);
+$website-red: rgb(205,92,92);
+$website-orange: rgb(243,84,45);
+$website-grey: rgb(205,205,205);
+$website-black: rgb(28,28,28);
+$website-background: rgb(236,240,241); //website-background-color, header text color
+$website-color: rgb(62,62,62); //text-color-black
+
+$website-oxygen: 'Oxygen', new roman , serif;
+$website-comfortaa: 'Comfortaa', helvetica, sans-serif;
+$website-quicksand: 'Quicksand', helvetica, sans-serif;
+
+$website-width: 960px;
+$header-height: 45px;
+
+$carousel-z-index: 0;
+$header-dropdown-z-index: 100;
+$header-popup-z-index: 900;
+$notice-z-index: 850;
+
+
+@mixin border-margin-padding-zero{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin opacity($opacity){
+    filter: alpha(opacity=$opacity*100); /* For IE8 and earlier */
+    opacity: $opacity;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($top, $right, $bottom, $left, $color){
+    -webkit-box-shadow: $top $right $bottom $left $color;
+    -moz-box-shadow: $top $right $bottom $left $color;
+    -ms-box-shadow: $top $right $bottom $left $color;
+    -o-box-shadow: $top $right $bottom $left $color;
+    box-shadow: $top $right $bottom $left $color;
+}
+@mixin box-shadow-none{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+}
+
+@mixin appearance($arg){
+    -webkit-appearance: $arg;
+    -moz-appearance: $arg;
+    appearance: $arg;
+}
+
+@mixin box-sizing($arg){
+    -webkit-box-sizing: $arg;
+    -moz-box-sizing: $arg;
+    -ms-box-sizing: $arg;
+    -o-box-sizing: $arg;
+    box-sizing: $arg;
+}
+
+@mixin height-and-line-height($arg){
+    height: $arg;
+    line-height: $arg;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+{
+  margin: 0px 0px 0px 0px ;
+  padding: 0px 0px 0px 0px;
+}
+
+html
+{
+  min-height: 100%;
+}
+body{
+    font-size: 14px;
+    font-family: $website-oxygen;
+    color: $website-color;
+    background-color: $website-background;
+    min-height: 100%;
+    position: relative;
+}
+header{
+    color: $website-background;
+    background-color: $website-black;
+}
+nav{
+    font-size: 18px;
+    font-family: $website-quicksand;
+}
+#container{
+    width: $website-width;
+    margin: auto;
+    overflow: hidden;
+    padding-bottom: 200px;
+}
+ul{
+    @include border-margin-padding-zero;
+    list-style-type: none;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+h1{
+    margin: 10px 0 10px 0;
+    font-family: $website-comfortaa;
+    font-size: 24px;
+}
+h2{
+    font-family: $website-comfortaa;
+    font-size: 16px;
+}
+input[type=text], input[type=password], textarea{
+    border: 1px solid $website-grey;
+    background-color: $white;
+    padding: 0 0 0 2px;
+    margin: 0;
+}
+form input[type=submit]{
+    @include border-margin-padding-zero;
+    color: $white;
+}
+.field_with_errors{
+    input[type=text], input[type=password], textarea{
+        border: 1px solid $red;
+    }
+}
+.lang-select-style{
+    /* border: 1px solid #ccc; */
+    border: 0;
+    width: 100px;
+    display: inline-block;
+    float: right;
+    height: 30px;
+    margin-top: 0px;
+    /* border-radius: 3px; */
+    overflow: hidden;
+    background: $website-background url("select_arrow.png") no-repeat 90% 50%;
+    select {
+        padding: 5px 8px;
+        width: 130%;
+        border: none;
+        @include box-shadow-none;
+        /* box-shadow: none; */
+        background: transparent;
+        background-image: none;
+        @include appearance(none);
+        /* -webkit-appearance: none; */
+    }
+    select:focus{
+        outline: none;
+    }
+}
+.current{
+    color: $website-orange;
+    font-weight: bold;
+}
+.dummy-popup{
+    color: $white;
+    cursor: pointer;
+}
+.socialIcon, .profIcon{
+    /* padding: 0 2px 0 2px; */
+    height: 30px;
+    width: 30px;
+}
+.standardPic{
+    height: 120px;
+    width: 120px;
+}
+.errors{
+    color: rgb(255,0,0);
+}
+.hide{
+    display: none;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+.clear-float{
+    clear: both;
+}
+.button{
+    cursor: pointer;
+    color: $white;
+}
+
+#web-notice{
+    text-align: center;
+    position: absolute;
+    left: 150px;
+    right: 150px;
+    z-index: $notice-z-index;
+    background-color: $website-yellow;
+    width: 660px;
+    height: 20px;
+    #close{
+        display: inline-block;
+        float:right;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+}
+.popup-close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    @include height-and-line-height(20px);
+    width: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: $website-blue;
+    cursor: pointer;
+}
+
+.follow-edit-button{
+    a, span, input[type=submit]{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        padding: 5px;
+        background-color: $website-orange;
+        color: $white;
+    }
+}
+
+$header-signin-btn-height: 20px;
+$header-signin-btn-width: 80px;
+$header-signin-btn-right-border: 10px;
+$header-signin-popup-background-shade: rgba(255,255,255,0.6);
+$header-signin-popup-overlay-z-index: 800;
+
+
+$carousel-wrapper-width: 15000px;
+$carousel-loggedin-height: 140px;
+$carousel-height: 240px; /// carousel height when not logged in
+
+$carousel-thumbnail-height: 30px;
+$carousel-thumbnail-width: 45px;
+$carousel-thumbnail-border-width: 5px;
+
+
+
+
+// remove later
+
+.tmp-img{
+    height: 20px;
+    width: 20px;
+}
+
+header{
+    @include height-and-line-height($header-height);
+    width: 100%; //position: fixed wil not work properly without this
+    min-width: $website-width;
+    position: relative; //to make position absolute of sign button wrt header
+    nav{
+        width: $website-width;
+        margin: auto;
+        li{
+            float:left;
+            margin-right: 10px;
+            img{
+                height: 20px;
+                width: 20px;
+                padding-right: 3px;
+                /* background-color: $red; */
+            }
+        }
+        div.searchbar
+        {
+          height: 25px;
+          width: 300px;
+          display: inline-block;
+          float: left;
+          margin: 10px 0px 0px 120px;
+          overflow: hidden;
+          @include border-radius(20px);
+          div.searchtextbox
+          {
+            height: 100%;
+            width: 270px;
+            display: inline-block;
+            float: left;
+            margin: 0px 0px 0px 0px;
+            input
+            {
+              padding-left: 10px;
+              height: 100%;
+              border: none;
+              width: 268px;
+              display: block;
+            }
+          }
+          div.searchicon
+          {
+            height: 100%;
+            width: 30px;
+            display: inline-block;
+            float: left;
+            margin: 0px 0px 0px 0px;
+            background-color: $website-blue;
+            img
+            {
+              margin-left: 4px;
+              height: 20px;
+              margin-top: 2px;
+              width: 20px;
+              display: block;
+            }
+          }
+          div.searchicon:hover
+          {
+            cursor: pointer;
+          }
+        }
+    }
+
+    #header-right-btn-wrapper{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        text-align: left;
+        width: 195px;
+        z-index: $header-dropdown-z-index;
+        &:hover{
+            background-color: $website-grey;
+            color: $website-color;
+            border: 1px solid $website-color;
+        }
+        #header-right-btn{
+            width: 195px;
+            height: 45px;
+            cursor: default;
+            span{
+                padding-left: 40px;
+            }
+        }
+        #header-right-btn-dropdown{
+            display: none;
+            position: relative;
+            width: 195px;
+            height: 120px;
+            line-height: 30px;
+            li{
+                width: 195px;
+                height: 30px;
+                line-height: 30px;
+                a{
+                    display: block;
+                    width: 155px;
+                    padding-left: 40px;
+                    height: 30px;
+                    &:hover{
+                        background-color: $website-background;
+                    }
+                }
+            }
+        }
+    }
+    #header-signin-btn-wrapper{
+        position: absolute;
+        top: 0px;
+        right: $header-signin-btn-right-border;
+        text-align: center;
+        height: $header-height;
+        line-height: $header-height;
+        #header-signin-btn{
+            display: inline-block;
+            vertical-align: middle;
+            height: $header-signin-btn-height;
+            line-height: $header-signin-btn-height;
+            width: $header-signin-btn-width;
+            background-color: $website-blue;
+        }
+    }
+}
+
+#signin-popup-overlay{
+    display: none;
+    position: fixed;
+    background-color: $header-signin-popup-background-shade;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $header-signin-popup-overlay-z-index;
+}
+#login-popup-scope{
+    #signin-popup, #signup-popup{
+        display: none;
+        /* position: relative; */
+        position: fixed; // for top to work and for close position absolute
+        top: 100px;
+        left: 50%;
+        width: 300px;
+        margin-left: -150px;
+        border: 2px solid $website-blue;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        z-index: $header-popup-z-index;
+        background-color: $website-background;
+    }
+    input[type=text], input[type=password]{
+        height: 30px;
+        width :200px;
+        height: 30px;
+        line-height: 30px;
+        margin: 5px 0 5px 0;
+    }
+    input[type=submit]{
+        position: absolute;
+        right: 48px;
+        width: 70px;
+        height: 25px;
+    }
+    #join-now{
+        margin-top: 20px;
+        #join-now-two{
+            color: $website-orange;
+            cursor: pointer;
+        }
+    }
+    #already-signed{
+        margin-top: 50px;
+        #login-one{
+            color: $website-blue;
+            cursor: pointer;
+        }
+    }
+    #signin-popup{
+        height: 320px;
+        #popup-social-icon{
+            margin-top: 10px;
+            margin-bottom: 15px;
+            .socialNetworkConnect{
+                color: $white;
+                display: inline-block;
+                line-height: 30px;
+                height: 30px;
+                width: 200px;
+                margin: 5px 0 5px 0;
+            }
+            .fbConnect{
+                background-color: $facebook-color;
+            }
+            .googleConnect{
+                background-color: $google-color;
+            }
+        }
+        #forgot-sign{
+            text-align: left;
+            width: 200px;
+            margin: auto;
+            a{
+                font-size: 10px;
+            /* margin-left: 48px; */
+            }
+        }
+        input[type=submit]{
+            background-color: $website-blue;
+        }
+    }
+    #signup-popup{
+        height: 370px;
+        #popup-gender-icons{
+            line-height: 0px;
+            height: 31px;
+            width: 200px;
+            margin: auto;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            div
+            {
+              display: inline-block;
+              float: left;
+              height: 31px;
+              line-height: 31px;
+            }
+            input[type=radio]{
+                display:none;
+            }
+            input[type=radio] + img{
+                cursor:pointer;
+                padding: 3px;
+                border:0px solid transparent;
+            }
+            input[type=radio]:checked + img{
+                background: $website-blue;
+            }
+        }
+        img{
+            height: 25px;
+            width: 30px;
+        }
+        input[type=submit]{
+            background-color: $website-orange;
+            display: block;
+        }
+        div.agreementBeforeSignUp
+        {
+            font-size: 10px;
+            width: 280px;
+            margin: 10px auto 5px auto;
+            a
+            {
+              color: $website-blue;
+            }
+        }
+    }
+}
+
+.quote{
+    height: 40px;
+    line-height: 40px;
+    img{
+        height: 40px;
+        width: 40px;
+        float: left;
+    }
+    span{
+        color: $website-black;
+        font-family: $website-quicksand;
+        font-size: 18px;
+    }
+}
+.web-block{
+    margin-top: 10px;
+    height: 140px;
+}
+.extrapadding
+{
+    height: 136px;
+    background : #cccccc;
+    padding: 2px;
+}
+
+.followers, .followings{
+    color: $website-blue;
+    display: inline-block;
+}
+.block-info
+{
+    position: relative; //to make the position of edit follow absolute
+    height: 120px;
+    width: 940px;
+    padding: 8px;
+    background-color: $white;
+
+    img{
+        margin-right: 10px;
+    }
+    h1{
+        margin: 0;
+    }
+    .followers{
+        padding-right: 5px;
+        border-right: 2px $website-blue solid;
+    }
+    .followings{
+        padding-left: 5px;
+    }
+    div.productiontitle , div.competitiontitle
+    {
+      height: 30px;
+      width: 940px;
+      h1 ,a
+      {
+        height: 30px;
+        width: 940px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+      }
+      a:hover
+      {
+        color: $website-blue;
+      }
+    }
+    div.followersvideo , div.productionlink
+    {
+      height: 20px;
+      overflow: hidden;
+      margin-bottom: 5px;
+      margin-top: 3px;
+      a
+      {
+        height: 30px;
+        width: 940px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+      }
+      a:hover
+      {
+        color: $website-blue;
+      }
+    }
+    div.productiondescription
+    {
+      height: 55px;
+      overflow: hidden;
+      word-wrap:break-word;
+    }
+    div.endstartres
+    {
+      height: 20px;
+      div
+      {
+        display: inline-block;
+        float:  right;
+      }
+      div.status
+      {
+        display: inline-block;
+        float: left;
+        margin-right: 5px;
+        div{
+          padding: 0px 5px 0px 5px;
+          color: $white
+        }
+        div.notrunning
+        {
+          background-color: $website-orange;
+        }
+        div.running
+        {
+          background-color: $website-blue;
+        }
+      }
+    }
+}
+
+
+.new-title-div{
+    margin: 20px 0 20px 0;
+    width: 960px;
+    text-align: center;
+    @include height-and-line-height(45px);
+}
+
+.nav2{
+    margin-top: 10px;
+    @include height-and-line-height(30px);
+    font-family: $website-comfortaa;
+    font-size: 16px;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: $website-blue;
+    a{
+        display: inline-block;
+        height: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: $website-black;
+    }
+}
+
+#new-content-title{
+    height: 30px;
+    line-height: 30px;
+    .numberCircle {
+        height: 100%;
+        width: 100%;
+        background: $website-blue;
+        border: 1px solid $website-blue;
+        padding: 2px;
+        @include border-radius(50%);
+        @include box-sizing(border-box);
+        text-align: center;
+        line-height: 15px;
+        color: #fff;
+    }
+
+    .numberContainer {
+        width: 20px;
+        height: 20px;
+        @include border-radius(50%);
+        border: 1px solid $website-blue;
+        padding: 2px;
+        float: left;
+    }
+}
+
+.new-necessary, .new-interesting, .new-famous, .video-new-necessary, .video-new-interesting{
+    h2{
+        color: $website-blue;
+        padding-left: 30px;
+    }
+    .newField{
+        padding-top: 20px;
+
+        select
+        {
+          max-width: 200px;
+        }
+        label{
+            input[type=checkbox] , input[type=radio]{
+              display:none;
+            }
+          input[type=checkbox] + span , input[type=radio] + span{
+            cursor:pointer;
+            color: $website-grey;
+            border:0px solid transparent;
+            font-weight: bold;
+          }
+          input[type=checkbox]:checked + span , input[type=radio]:checked + span{
+            /* background:#bbb; */
+            color: $website-blue;
+            font-weight: bold;
+          }
+          input[type=checkbox]:not(:checked)+ span:hover , input[type=radio]:not(:checked)+ span:hover{
+             /* background:#bbb; */
+             color: $website-orange;
+             font-weight: bold;
+          }
+        }
+    }
+
+    input[type=text]{
+      width: 245px;
+      height: 20px;
+    }
+    textarea{
+        height: 150px;
+    }
+}
+.video-new-necessary{
+    width: 300px;
+    height: 500px;
+    border-right: 2px solid $website-grey;
+}
+.video-new-interesting{
+    padding-left: 30px;
+    width: 600px;
+    textarea{
+        width: 500px;
+    }
+    input[type=text]{
+        width: 500px;
+    }
+}
+
+.new-necessary, .new-famous{
+    width: 250px;
+    textarea{
+        width: 250px;
+    }
+}
+
+form.edit_production
+{
+  > div
+  {
+   height: 380px;
+  }
+}
+form.edit_competition
+{
+  > div
+  {
+    height: 580px;
+  }
+}
+/* .new-admin{ */
+/*   color: $website-blue; */
+/*   margin-left: 16px; */
+/* } */
+.new-interesting{
+    height: 550px;
+    width: 370px;
+    border-right: 2px solid $website-grey;
+    border-left: 2px solid $website-grey;
+    padding: 0 20px 0 20px;
+    margin: 0 20px 0 20px;
+    textarea{
+        width: 370px;
+    }
+}
+
+.start-new-prod{
+    display: inline-block;
+    width: 960px;
+    @include height-and-line-height(30px);
+    text-align: center;
+    color: $white;
+    background-color: $website-blue;
+    margin-top: 5px;
+}
+
+.postBtn{
+    margin: auto;
+    margin-bottom: 20px;
+    display: block;
+    background-color: $website-blue;
+    color: $white;
+    height: 30px;
+    width: 70px;
+    border: 0px;
+}
+.postBtnVideo
+{
+  margin-right: 125px !important;
+}
+
+.delBtn{
+  position: relative;
+  top: 70px;
+  margin-left: 30px;
+  display: inline-block;
+  background-color: $website-orange;
+  height: 30px;
+  padding: 0px 5px 0px 5px;
+  vertical-align: middle;
+  border: 0px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 30px;
+  color: #ffffff;
+}
+.delBtnVideo{
+  float: left;
+  margin: 0px 270px 0px 30px;
+  display: inline-block;
+  background-color: $website-orange;
+  height: 30px;
+  padding: 0px 5px 0px 5px;
+  vertical-align: middle;
+  border: 0px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 30px;
+  color: $white;
+}
+.cancelBtnVideo{
+  margin-left: 30px;
+  margin-right: 20px;
+  float: right;
+  display: inline-block;
+  background-color: $white;
+  height: 30px;
+  width: 100px;
+  vertical-align: middle;
+  border: 0px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 30px;
+}
+.postBtnProd{
+  display: inline-block;
+  margin-top: 172px !important;
+  float: left;
+  background-color: $website-blue;
+  color: $white;
+  height: 30px;
+  width: 70px;
+  border: 0px;
+}
+.postBtnComp{
+  display: inline-block;
+  margin-top: 372px !important;
+  float: left;
+  background-color: $website-blue;
+  color: $white;
+  height: 30px;
+  width: 70px;
+  border: 0px;
+}
+.delBtnProd{
+  margin-bottom: 30px;
+  float: left;
+  display: inline-block;
+  background-color: $website-orange;
+  height: 30px;
+  padding: 0px 5px 0px 5px;
+  vertical-align: middle;
+  border: 0px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 30px;
+  color: $white;
+}
+.cancelBtnProd{
+  margin-bottom: 30px;
+  float: right;
+  display: inline-block;
+  background-color: $white;
+  height: 30px;
+  width: 70px;
+  vertical-align: middle;
+  border: 0px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 30px;
+}
+
+.cancelBtnComp{
+  margin-bottom: 30px;
+  float: right;
+  display: inline-block;
+  background-color: $white;
+  height: 30px;
+  width: 70px;
+  vertical-align: middle;
+  border: 0px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 30px;
+}
+
+.margin-right{
+  margin-right: 400px;
+  margin-top: 0px;
+}
+
+
+.admin_partial{
+    padding-left: 20px;
+    margin-top: 10px;
+    min-height: 30px;
+    .remBtn
+    {
+        background-color: $white;
+        color: $website-orange;
+    }
+    .remBtn:hover
+    {
+      text-decoration: underline;
+    }
+    a
+    {
+      display: inline-block;
+      float: left;
+      font-size: 14px;
+      line-height: 25px;
+    }
+    form
+    {
+      display: inline-block;
+      float: left;
+      margin-left: 10px;
+      input
+      {
+        padding: 2px;
+        height: 25px;
+      }
+    }
+}
+
+#new_admin_role
+{
+  .add-admin-btn{
+    background-color: $website-blue;
+    color: $white;
+  }
+
+}
+
+.comp-prod-banner{
+    position: relative;
+    .comp-prod-status{
+        position: relative;
+        bottom: 10px;
+        padding-top: 10px;
+    }
+
+}
+
+.bannerImage{
+    width: 100%;
+    height: 100%;
+/* width: 100px; */
+/* heigh: 100px; */
+}
+/* .prodName{ */
+/*     height: 50px; */
+/*     /\* background-color: $white; *\/ */
+/*     font-size: 30px; */
+/*     line-height: 50px; */
+/*     img{ */
+/*         position: relative; */
+/*         top: 5px; */
+/*         height: 30px; */
+/*         width: 30px; */
+/*         padding: 0 5px 0 5px; */
+/*     } */
+/*     span{ */
+/*         color: $website-blue; */
+/*         padding: 0 5px 0 5px; */
+/*     } */
+/* } */
+
+
+//Css for filter div
+div.filter-div
+{
+  width: 960px;
+  background-color: $website-grey;
+  height : 100px;
+  span.genre
+  {
+    width: 550px;
+    height: 100px;
+    float: left;
+    div.allgenre
+    {
+      margin: auto 10px auto 15px;
+      width: 470px;
+      height: 100%;
+      > span
+      {
+        margin: 8px 2px 0px 0px;
+        float:left;
+        height: 15px;
+        width: 115px;
+        line-height: 14px;
+        span
+        {
+          position: relative;
+          width: 15px;
+          height: 15px;
+          label.checkboxstylelabel
+          {
+            cursor: pointer;
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            top: 0;
+            left: 0;
+            background: transparent;
+            border: 1px solid black;
+          }
+          label:after {
+            opacity: 0.0;
+            content: '';
+            position: absolute;
+            width: 9px;
+            height: 5px;
+            background: transparent;
+            top: 1px;
+            left: 1px;
+            border: 2px solid black;
+            border-top: none;
+            border-right: none;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+          input[type=checkbox]:checked + label:after {
+            opacity: 1;
+          }
+          input[type=checkbox]{
+            display: none;
+          }
+        }
+        input,label,span
+        {
+          display:inline-block;
+          height: 15px;
+          float:left;
+          margin: 0px;
+        }
+        input{
+          border: 1px solid black;
+        }
+        > label
+        {
+          margin-left: 2px;
+          cursor: pointer;
+          width: 95px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  span.lang-subtitle
+  {
+    width: 160px;
+    height: 100px;
+    float: left;
+    div.lang-select-style
+    {
+      float: left;
+      margin: 20px 0px 0px 20px;
+      width: 120px;
+    }
+    div.subtitle
+    {
+      float: left;
+      width: 120px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      margin: 10px 0px 0px 20px;
+      background: $website-blue;
+      position: relative;
+      input:checked +  label
+      {
+        font-weight: bold;
+        color: $website-orange;
+      }
+      label:hover
+      {
+        cursor: pointer;
+      }
+      label
+      {
+        text-align: left;
+        height: 30px;
+        width: 120px;
+        padding-left: 11px;
+        float: left;
+      }
+      label.checkboxstylelabel {
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        top: 7px;
+        left: 94px;
+        float: right;
+        background: transparent;
+      }
+      label.checkboxstylelabel:after {
+        opacity: 0.0;
+        content: '';
+        position: absolute;
+        width: 9px;
+        height: 5px;
+        background: transparent;
+        top: 1px;
+        left: 1px;
+        border: 2px solid black;
+        border-top: none;
+        border-right: none;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      input[type=checkbox]:checked + label:after {
+        opacity: 1;
+      }
+      input
+      {
+        display: none;
+      }
+    }
+  }
+  span.sortby
+  {
+    width: 250px;
+    height: 100px;
+    float: left;
+    div.text
+    {
+      height: 20px;
+      padding: 10px 0px 0px 100px;
+      margin-bottom: 5px;
+    }
+    div.sortoptions
+    {
+      margin: 0px 10px 0px 100px;
+      height: 20px;
+      width: 100px;
+      input[type=radio]
+      {
+        display:none;
+      }
+      label:hover
+      {
+        cursor: pointer;
+      }
+      input[type=radio]:checked + label
+      {
+        font-weight: bold;
+        color: $website-orange;
+      }
+      div
+      {
+        float:left;
+        height: 20px;
+        width: 100px;
+      }
+    }
+  }
+}
+
+div.videos
+{
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+div.loadbutton
+{
+  height: 35px;
+  width: 960px;
+  margin: 0px;
+  background-color: $website-grey;
+  #loadFilterResults
+  {
+    text-align: center;
+    margin-left: 480px;
+    width: 40px;
+    color: $white;
+    background: $website-orange;
+    border: 1px solid $website-orange;
+    border: 1px solid rgba($website-orange, .5);
+    padding: 5px;
+  }
+  #loadFilterResults:hover
+  {
+    cursor: pointer;
+  }
+}
+
+div.connectwithfbgoogle
+{
+  text-align: center;
+  width: 960px;
+  div
+  {
+    display: inline-block;
+    margin: auto 5px auto auto;
+  }
+  a
+  {
+    text-align: center;
+    color: white;
+    display: inline-block;
+    line-height: 30px;
+    height: 30px;
+    width: 200px;
+    margin: 5px 0 5px 0;
+  }
+  div.oauth-fb
+  {
+    a
+    {
+     background-color: $facebook-color;
+    }
+  }
+  div.oauth-google
+  {
+    a
+    {
+      background-color: $google-color;
+    }
+  }
+}
+.cp_show_title{
+    padding: 10px 0 10px 0;
+}
+p.productionlink
+{
+  a:hover
+  {
+    color: $website-blue;
+  }
+}
+
+.no-res-txt{
+    text-align: center;
+    background-color: $website-grey;
+    padding: 10px;
+}
+.info-content{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: $white;
+    font-size: 13px;
+    a{
+      color: $website-blue;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+  b{
+    font: bold;
+    color: $black;
+  }
+}
+
+
+footer
+{
+  height: 165px;
+  background-color: $website-grey;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  div.footer-feedback
+  {
+    width: 960px;
+    height: 45px;
+    margin: 0px auto 0px auto;
+    img ,span
+    {
+      display:inline-block;
+      float:right;
+      margin: 7px auto 8px auto;
+      line-height: 30px;
+    }
+    a
+    {
+      display: inline-block;
+      text-align: center;
+      color: white;
+      line-height: 30px;
+      height: 30px;
+      width: 150px;
+      margin: 7px 5px 8px 5px;
+      background: $website-blue;
+    }
+    a.float-left
+    {
+      float: left;
+    }
+    a.float-right
+    {
+      float: right;
+    }
+    a.facebook-color
+    {
+      background:  $facebook-color;
+    }
+    a.google-color
+    {
+      background: $google-color;
+    }
+  }
+  div.website-description
+  {
+    margin: 10px auto auto auto;
+    padding-bottom: 10px;
+    width: 960px;
+    height: 100px;
+    font-size: 13px;
+  }
+}
+
+div.howItWorks
+{
+  margin-top: 150px;
+  background: $white;
+  padding: 15px;
+  border: 2px solid $website-grey;
+  a
+  {
+    color: $website-blue;
+  }
+  a:hover
+  {
+    text-decoration: underline;
+  }
+}
+
+div.competition-apply-form
+{
+  width: 960px;
+  margin-top: 50px;
+  div
+  {
+    width: 412px;
+    margin: 10px auto auto auto;
+    span
+    {
+      display: inline-block;
+      width: 150px;
+      input , textarea , div
+      {
+        width: 253px;
+        display: inline-block;
+      }
+      textarea
+      {
+        height: 200px;
+      }
+    }
+  }
+  > input
+  {
+    margin-left: 585px;
+  }
+}
+
+.ErrorInCompetitionApply
+{
+  width: 412px;
+  margin: 10px auto auto auto;
+}

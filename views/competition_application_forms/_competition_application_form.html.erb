@@ -1,0 +1,80 @@
+<% video = competition_application_form.video %>
+<div id="<%= video.url_token %>" class="comp-app">
+  <div id="part1">
+    <div id="team_name">
+      <span><strong>Team Name:</strong></span>
+      <span>  <%= competition_application_form.team_name %></span>
+    </div>
+    <div id="video_title">
+      <span>
+        <strong>Video:</strong>
+      </span>
+      <span>
+        <%= link_to video.title, video %>
+      </span>
+    </div>
+    <div id="mobile">
+      <span>
+        <strong>Mobile Number:</strong>
+      </span>
+      <span>
+          <%= competition_application_form.mobile %>
+      </span>
+    </div>
+    <div id="alt_mobile">
+      <span>
+        <strong>Alternate Mobile Number:</strong>
+      </span>
+      <span>
+          <%= competition_application_form.alt_mobile %>
+      </span>
+    </div>
+    <div id="email">
+      <span>
+        <strong>Email:</strong>
+      </span>
+      <span>
+          <%= competition_application_form.email %>
+      </span>
+    </div>
+    <div>
+      <span>
+        <strong>Address:</strong>
+      </span>
+      <span>
+        <%= competition_application_form.address %>
+      </span>
+    </div>
+  <!--  <div><%= competition_application_form.address %></div>
+  -->
+  </div>
+  <div id="part2">
+    <% if !competition_application_form.competition.lock %>
+        <% if competition_application_form.approved %>
+          <%= form_for(competition_application_form,
+                       html: {method: :delete, data: {confirm: "Are you sure?"}},
+                       remote: true) do |f| %>
+            <%= f.submit "Delete", data: {disable_with: "Wait.."} , class:"delete"%>
+        <% end %>
+        <% else %>
+            <%= form_for(competition_application_form,
+                       remote: true) do |f| %>
+                <% f.submit "Approve", data: {disable_with: "Wait..."} ,class:"approve"%>
+            <% end %>
+            <%= form_for(competition_application_form,
+                       html: {method: :delete, data: {confirm: "Are you sure?", disable_with: "Wait.."}},
+                       remote: true) do |f| %>
+                <div class="reasonforrejection">
+                    <span>
+                        <strong>Reason for Rejection:</strong>
+                    </span>
+                  <%= text_area :message, nil, placeholder: "Reason for rejection"  %>
+                </div>
+                <div>
+                  <%= f.submit "Reject", data: {confirm: "Are you sure?", disable_with: "Wait.."} %>
+                </div>
+            <% end %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

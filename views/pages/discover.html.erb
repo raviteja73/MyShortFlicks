@@ -1,0 +1,15 @@
+<%= render "shared/new_title", text: "Stumble upon that perfect film" %>
+<%= render "pages/discover_nav2" %>
+<%= render "shared/filter" %>
+<%= render "videos/compact_detailed" %>
+<% if @videos.empty? %>
+  <%= render "shared/no_results", text: "No Short Films found" %>
+<% else %>
+  <% video_info %>
+  <div class="videos">
+    <%= render @videos %>
+  </div>
+  <div class="load-more">
+    <%= link_to_next_page @videos, "Load More", remote: true, class: "load-more-videos" %>
+  </div>
+<% end %>

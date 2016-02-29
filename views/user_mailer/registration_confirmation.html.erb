@@ -1,0 +1,5 @@
+<h2>Welcome to <%= link_to "My Short Flicks", root_path %>, <%= @user.first_name %></h2>
+Please confirm your email by clicking on link below
+<p> <%= link_to "Confirm Email", email_confirmation_url(@user.email_reset_token) %> </p>
+<p> Thanks for joining and have a great day!!</p>
+<p> If you're not <%= @user.first_name %> or didn't request verification, you can ignore this email. </p>

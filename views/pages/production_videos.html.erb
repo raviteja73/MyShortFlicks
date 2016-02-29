@@ -1,0 +1,8 @@
+<%= provide(:title, "Production ShortFilms") %>
+<div class="videos">
+  <% video_info %>
+  <%= render @videos %>
+</div>
+<div class="load-more">
+  <%= link_to_next_page @videos, "Load More", remote: true, class: "load-more-videos" %>
+</div>

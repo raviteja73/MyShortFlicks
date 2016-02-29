@@ -1,0 +1,6 @@
+<% if @admin_role.errors.count > 0 %>
+   $(".errors").show();
+<% else %>
+   $(".admins").append("<%= escape_javascript( render "admin_roles/production_admin_user", admin: @admin  ) %>")
+   $("input[type=text]").val("");
+<% end %>

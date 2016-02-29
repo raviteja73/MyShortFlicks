@@ -1,0 +1,31 @@
+<%= link_to production do %>
+  <div class="web-block extrapadding">
+    <div class="block-info">
+
+      <%# image_tag(production.banner(:banner), alt: "production icon", class: "standardPic float-left") %>
+      <div class="productiontitle">
+        <h1> <%= production.name %> </h1>
+      </div>
+      <div class="followersvideo">
+        <%= pluralize(production.production_followers_count, "Follower") %>
+        <%= pluralize(production.videos_count, "Video") %><br/> <br/>
+      </div>
+      <div class="productiondescription">
+        <strong>Description:</strong> <%= production.description %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%# production.description %>
+
+
+
+
+
+
+<!-- <li> -->
+
+<!--   Posted <%# time_ago_in_words(production.created_at) %> ago. -->
+<!--   <%# link_to "Show", production %> -->
+<!--   <%# link_to "Edit", edit_production_path(production) %> -->
+<!-- </li> -->

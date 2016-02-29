@@ -1,0 +1,31 @@
+<%= provide(:title, @user.first_name) %>
+<h1 class="cp_show_title"> Productions </h1>
+<% if my_current_user?(@user) %>
+  <%= link_to "Start New Production", new_production_path, class: "start-new-prod" %>
+<% end %>
+<% if @productions.count != 0 %>
+  <%= render @productions %>
+<% else %>
+  <h2>No Productions started yet</h2>
+<% end %>
+
+<div class="connectwithfbgoogle">
+  <% if my_current_user?(@user) %>
+      <div class="oauth-fb">
+          <% @omniauth_auth = OmniauthAuthentication.where(user_id: @user.id, provider: "facebook").first %>
+          <% if @omniauth_auth.nil? %>
+            <%= link_to "Connect with Facebook", "/auth/facebook" %>
+          <% else %>
+          <%= link_to "Unlink Facebook", @omniauth_auth, method: :delete, data: { confirm: 'Are you certain you want to unlink ?' } %>
+          <% end %>
+      </div>
+      <div class="oauth-google">
+          <% @omniauth_auth = OmniauthAuthentication.where(user_id: @user.id, provider: "google_oauth2").first %>
+          <% if @omniauth_auth.nil? %>
+            <%= link_to "Connect with Google +", "/auth/google_oauth2" %>
+          <% else %>
+            <%= link_to "Unlink Google +", @omniauth_auth, method: :delete, data: { confirm: 'Are you certain you want to unlink ?' } %>
+          <% end %>
+      </div>
+    <% end %>
+</div>

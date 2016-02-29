@@ -1,0 +1,91 @@
+<%= form_for @competition, :html=>{:onsubmit=>'return ValidateCompEditForm();'} do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+
+  <div class="new-necessary float-left">
+
+    <%= render "shared/new_content_title", integer: "1",text: "Enter necessary stuff" %>
+    <div class="newField">
+      <%= f.label :production, "Production*" %> <br/>
+      <% if @competition.production %>
+        <%= collection_select(:competition, :production_id, @productions, :url_token, :name, selected: @competition.production.url_token) %>
+      <% else %>
+        <%= collection_select(:competition, :production_id, @productions, :url_token, :name) %>
+      <% end %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :name, "Competition Name*" %> <br/>
+      <%= f.text_field :name, placeholder: "Name" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :rules, "Rules*" %> <br/>
+      <%= f.text_area :rules, placeholder: "Rules" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :start_date, "Start Date*" %> <br/>
+      <%= f.text_field :start_date, placeholder: "yy-mm-dd", class: "datepicker" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :end_date, "End Date*" %> <br/>
+      <%= f.text_field :end_date, placeholder: "yy-mm-dd", class: "datepicker" %>
+    </div>
+
+  </div>
+
+
+  <div class = "new-interesting float-left">
+    <%= render "shared/new_content_title", integer: "2",text: "Add the interesting facts" %>
+
+    <div class="newField">
+      <%= f.label :resuls_date, "Results date*" %> <br/>
+      <%= f.text_field :results_date, class: "datepicker", placeholder: "yy-mm-dd" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :description, "Detailed Description*" %> <br/>
+      <%= f.text_area :description, placeholder: "Description" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :prizes, "Prizes*" %> <br/>
+      <%= f.text_area :prizes, placeholder: "Prizes" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :banner, "Banner(max 1 MB, 960x140)" %> <br/>
+      <%= f.file_field :banner %>
+    </div>
+
+  </div>
+
+
+
+  <div class="new-famous float-right">
+    <%= render "shared/new_content_title", integer: "3",text: "Make it famous" %>
+
+    <div class="newField">
+      <%= f.label :fb_url, "Facebook" %> <br/>
+      <%= f.text_field :fb_url, placeholder: "Facebook page url" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :google_url, "Google Plus" %> <br/>
+      <%= f.text_field :google_url, placeholder: "Google page url" %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :twitter_url, "Twitter" %> <br/>
+      <%= f.text_field :twitter_url, placeholder: "Twitter page url" %>
+    </div>
+
+
+    <%= f.submit "POST",  class: "postBtnComp" %>
+
+  </div>
+
+<% end %>

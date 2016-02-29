@@ -1,0 +1,26 @@
+<div class="web-block">
+  <div class="block-info">
+    <%= image_tag(@user.avatar.url(:thumbnail), alt: "User Profile Pic", class: "standardPic float-left") %>
+    <h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
+    <% if my_current_user?(@user) %>
+      <%= @user.email %>
+    <% else %>
+      <%= @user.gender %>
+    <% end %>
+    <br/><br/>
+
+    <div class="float-left">
+      Mini Reviews <%= @user.mini_reviews_count %> <br/>
+      Comments <%= @user.comments_count %>
+    </div>
+
+
+    <div class="follow-edit-button">
+      <% if my_signed_in? %>
+        <% if my_current_user?(@user) %>
+          <%= link_to "Edit", edit_user_path(my_current_user) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

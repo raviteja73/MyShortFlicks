@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%= render "shared/layout_head" %>
+  <body id = <%= body_id %> >
+
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+    <%= render "shared/header" %>
+    <div id = "container">
+      <% if my_signed_in? %>
+        <%= render "pages/home_loggedin_carousel" %>
+      <% else %>
+        <%= render "pages/home_carousel" %>
+      <% end %>
+      <%= render "pages/nav2" %>
+      <%= render "videos/compact_detailed" %>
+      <%= yield %>
+    </div>
+    <%= render "shared/footer" %>
+  </body>
+</html>

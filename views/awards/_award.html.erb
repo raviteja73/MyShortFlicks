@@ -1,0 +1,42 @@
+<div id="<%= award.video.url_token %>">
+  <div>
+    <span>
+      <strong>
+        Video:
+      </strong>
+    </span>
+    <span>
+      <%= link_to award.video.title, award.video %>
+    </span>
+  </div>
+  <div>
+    <span>
+      <strong>
+        Position:
+      </strong>
+    </span>
+    <span>
+      <%= award.position %>
+    </span>
+  </div>
+  <div>
+    <span>
+      <strong>
+        Comments:
+      </strong>
+    </span>
+    <span>
+      <p><%= award.comments %>
+      </p>
+    </span>
+  </div>
+  <% if @competition.verified and !@competition.lock %>
+    <%= form_for(award,
+                 html: {method: :delete, data: {confirm: "Remove this award?"}},
+                 remote: true) do |f| %>
+      <div class="removeAward">
+        <%= f.submit "Remove"%>
+      </div>
+    <% end %>
+  <% end %>
+</div>

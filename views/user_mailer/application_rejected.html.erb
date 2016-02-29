@@ -1,0 +1,10 @@
+<p> Your application for the competition, <%= link_to @competition.name, competition_url(@competition) %> is rejected </p>
+
+<p> Reason for Rejection <%= @reason %> </p>
+<p> Video : <%= link_to @video.title, video_url(@video) %>
+<p> Team name : <%= @competition_application_form.team_name %> </p>
+<p> Description : <%= @competition_application_form.description %> </p>
+<p> Email : <%= @competition_application_form.email %> </p>
+<p> Mobile: <%= @competition_application_form.mobile %> </p>
+<p> Alternate Mobile: <%= @competition_application_form.alt_mobile %> </p>
+<p> Address : <%= @competition_application_form.address %> </p>

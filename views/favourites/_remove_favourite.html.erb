@@ -1,0 +1,5 @@
+<%= form_for(my_current_user.favourites.find_by_video_id(video.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "Remove", type: :image, src: "/assets/favourite.png" , title: "Remove From Favorites"%>
+<% end %>

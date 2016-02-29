@@ -1,0 +1,82 @@
+<%= form_for  @video, :html=>{:onsubmit=>'return ValidateVideoEditForm();'} do |f| %>
+    <!-- <div class="Admin-Note"> -->
+    <!--   Note: Admin of the video should link his account to google profile, -->
+    <!--   <%# link_to "link here", my_current_user %> -->
+    <!-- </div> -->
+    <div style="overflow: hidden">
+
+    <%= render 'shared/error_messages', object: f.object %>
+  <div class="video-new-necessary float-left">
+
+    <%= render "shared/new_content_title", integer: "1",text: "Enter necessary stuff" %>
+
+    <div class="newField">
+      <%= f.label :production, "Production*" %> <br/>
+      <% if @video.production %>
+        <%= collection_select(:video, :production_id, @productions, :url_token, :name, selected: @video.production.url_token) %>
+      <% else %>
+        <%= collection_select(:video, :production_id, @productions, :url_token, :name) %>
+      <% end %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :title, "Title*" %> <br/>
+      <%= f.text_field :title, placeholder: "Title of short flick" %>
+    </div>
+
+    <div class="newField">
+      <% if @video.new_record? %>
+        <%= f.label :youtube_url, "Youtbe Url*" %> <br/>
+        <%= f.text_field :youtube_url, placeholder: "youtube url of your short flick" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class = "video-new-interesting float-left">
+    <%= render "shared/new_content_title", integer: "2",text: "Add the interesting facts" %>
+
+    <div class="newField">
+      <%= f.label :language, "Language* :" %>
+      <%= collection_select(:video, :language_id, Language.find(:all, order: :name), :id, :name) %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :subtitles, "Subtitles* :" %>
+      <label>
+        <%= f.radio_button :subtitles, "true" %>
+        <span>Yes</span>
+      </label>
+      <label>
+        <%= f.radio_button :subtitles, "false" %>
+        <span>No</span>
+      </label>
+    </div>
+
+    <div class="newField">
+      <%= f.label :genre, "Genres (min 1, max 4)" %> <br/>
+      <% for tag in Tag.find(:all, order: :name) %>
+          <label>
+            <%= check_box_tag "video[tag_ids][]", tag.id, @video.tags.include?(tag) %>
+            <span>
+              <%= tag.name.capitalize %> &nbsp
+            </span>
+          </label>
+      <% end %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :title, "Quote (optional)" %> <br/>
+      <%= f.text_field :quote %>
+    </div>
+
+    <div class="newField">
+      <%= f.label :description, "Description*" %> <br/>
+      <%= f.text_area :description, placeholder: "Description" %>
+    </div>
+  </div>
+</div>
+    <div style="float: right">
+      <%= f.submit "SAVE", class: "postBtn postBtnVideo", style: "margin: auto;margin-bottom: 20px;margin-left: 10px;" %>
+    </div>
+
+<% end %>

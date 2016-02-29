@@ -1,0 +1,39 @@
+<head>
+  <meta name="google-site-verification" content="NSKXnY5DJb_D_06qof7zMw6CMohgHjIAAYrrpx6IaAY" />
+  <meta charset="UTF-8">
+
+  <meta property="og:site_name" content="My Short Flicks"/>
+  <meta property="og:title" content="My Short Flicks <%= yield(:title) %>"/>
+  <meta property="og:description" content="<%= truncate(@video.description, length: 200) %>"/>
+  <meta property="og:image" content="<%= "https://i.ytimg.com/vi/" + @video.youtube_url+ "/hqdefault.jpg" %>" />
+  <meta property="og:url" content="<%= "http://www.myshortflicks.com/videos/" + @video.url_token %>" />
+  <meta property="og:type" content="video"/>
+  <meta property="fb:admins" content="anush.fb"/>
+  <meta property="fb:app_id" content="279453122204421" />
+
+
+     <!-- for Google  -->
+  <meta name="author" content="" />
+  <meta name="copyright" content="" />
+  <meta name="application-name" content="My Short Flicks" />
+  <meta name="description" content="<%= truncate(@video.description, length: 200) %>" />
+  <meta name="keywords" content="short films,shortfilms,videos,horror,comedy,thriller,anime,animation,short movies,small movies,short film india,short film hindi,short film telugu" />
+
+  <!-- for Twitter -->
+  <meta name="twitter:card" content="Video" />
+  <meta name="twitter:title" content= "My Short Flicks <%= yield(:title) %>" />
+  <meta name="twitter:description" content="<%= truncate(@video.description, length: 200) %>" />
+  <meta name="twitter:image" content="<%= "https://i.ytimg.com/vi/" + @video.youtube_url+ "/hqdefault.jpg" %>" />
+
+
+  <title>ShortFilms <%= yield(:title) %> </title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!-- Google fonts -->
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Quicksand|Oldenburg|Comfortaa:700,400" %>
+  <!-- Till here -->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>

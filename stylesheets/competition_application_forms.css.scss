@@ -1,0 +1,105 @@
+// Place all the styles related to the CompetitionApplicationForms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comp-app{
+  overflow: hidden;
+  margin-bottom: 10px;
+  background-color: $white;
+  border: 2px $website-grey solid;
+  padding: 10px 0px 10px 0px ;
+  margin: 30px auto 30px auto;
+  display: block;
+  width: 956px;
+  #part1{
+    float: left;
+    width: 100%;
+    text-align: center;
+    span
+    {
+      display: inline-block;
+      width: 180px;
+    }
+    div{
+      margin-bottom: 5px;
+      text-align: left;
+      padding-left: 20px;
+    }
+    input{
+      background-color: $website-blue;
+      color: $white;
+    }
+    a
+    {
+      color: $website-blue;
+    }
+    a:hover
+    {
+      text-decoration: underline;
+    }
+  }
+
+  #part2{
+    input{
+      background-color: $website-red;
+      color: $white;
+    }
+    form
+    {
+      input
+      {
+        padding: 5px;
+      }
+      width: 100%;
+      div
+      {
+        overflow: hidden;
+        width: 100%;
+        > input ,textarea
+        {
+          float: right;
+          margin-right: 10px;
+          margin-top: 10px;
+          display: inline-block;
+        }
+      }
+      > input
+      {
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      input.delete
+      {
+        background-color: $website-red;
+      }
+      input.approve
+      {
+        background-color: $website-blue;
+      }
+    }
+    > input ,textarea ,div
+    {
+      float: right;
+      display: inline-block;
+    }
+    div.reasonforrejection
+    {
+      height:55px;
+      margin-top: 10px;
+      span
+      {
+        display: inline-block;
+        margin-left: 20px;
+      }
+      textarea
+      {
+        width: 740px;
+        height: 50px;
+        //background-color: lightgray;
+        margin-top :0px;
+      }
+    }
+  }
+}

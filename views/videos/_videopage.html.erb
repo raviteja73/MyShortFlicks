@@ -1,0 +1,259 @@
+<%# REMOVE THIS STUFF AND CREATE A LAYOUT IN CONTROLLER%>
+ <link href="/assets/videopage.css" media="all" rel="stylesheet" type="text/css" />
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
+<script src="/assets/videopage.js" type="text/javascript"></script>
+	
+<%hexist={}%>
+<%if my_signed_in? %>
+	<%my_current_user.mini_reviews.where(:video_id => video.id ).count(:group => 'category').each do |k,v|%>
+
+	  <%hexist[k] = v%>
+	<%end%>
+<%end%>
+
+<%dataid='X'%>
+<%if !my_current_user.nil? %>
+<%dataid=my_current_user.url_token%>
+<%end%>
+
+<%hash={}%>
+<%video.mini_reviews.count(:group => 'category' ).each do |k,v|%>
+  
+  <%hash[k] = v%>
+<%end%>
+	
+	
+<div id='video_quote'>
+<%=video.quote%>
+</div>
+
+<div id='video_banner' data-id="<%= dataid %>" vid-id='<%= video.youtube_url %>'>
+	
+<div id='video'>
+<img src="http://img.youtube.com/vi/<%=video.youtube_url%>/0.jpg" />
+<div id="duration_langsubs">
+<div id="duration">
+<%=video.duration%>
+</div>
+<div id="lang_subs">
+<%=video.language.name%>(
+<% if video.subtitles==true %>
+-subs
+<%else%>
++subs
+<%end%>)
+</div>
+</div>
+</div>
+
+<div id='head1'>
+
+
+<div id='user_details'>
+<div id='user_image'>
+<img src="/assets/icon2.png" />
+</div>
+<div id='user_name'>
+<%=video.production.name.truncate(40)%>
+</div>
+</div><!--user details-->
+
+<div id='genre_details'>
+
+<div id='genre_list'>
+<%i=0%>
+<% video.tags.each do |tag| %>
+  <%i=i+1%>
+  <div id="genre-<%=i%>">
+  <%= tag.name.truncate(14) %>
+  </div>
+<% end %>
+</div><!--genre_list-->
+<div id='genre_icon'>
+<img src="/assets/icon2.png" />
+</div>
+</div><!--genre_Details-->
+</div><!--head-1-->
+<br>
+<div id='head2'>
+
+<div id='title'>
+<%=video.title%>
+</div>
+
+<div id='view_count'>
+<%vicount=video.impressionist_count(:filter=>:all)%>
+<% if vicount > 1 %>
+<h2><%=vicount%> views</h2>
+<%else%>
+<%=vicount%> view
+<%end%>
+</div>
+
+
+</div><!--head2-->
+
+
+<div id='head3'>
+<div id ='heart'>
+<img src="/assets/icon2.png" />
+</div>
+<div id='back'>
+<img src="/assets/icon2.png" />
+</div>
+<div id='socialfeeds'>
+<div id='fb'>
+<img src="/assets/icon2.png" />
+</div>
+<div id='tweet'>
+<img src="/assets/icon2.png" />
+</div>
+<div id='google'>
+<img src="/assets/icon2.png" />
+</div>
+</div><!--social feeds-->
+
+</div><!--head3-->
+
+<div id='head4'>
+<div id='review_video'>
+	<div id='review_name'>
+	i review
+	</div>
+<!--
+<div id='review_controls'>
+-->
+<table border="0">
+
+<tr>
+<td>
+<div id="acting" count-id="<%=hash['acting']%>">
+<% if hexist['acting'].to_s.to_i > 0 %>
+<div id="ticked" class="blue">acting+<%=hash['acting']%></div>
+
+<%else%>
+<% if hash['acting'].to_s.to_i >0 %>
+<button type="button">acting+<%=hash['acting']%></button>
+<%else%>
+<button type="button">acting+0</button>
+<%end%>
+<%end%>
+</div><!--acting-->
+</td>
+<td>
+<div id="dialogues" count-id="<%=hash['acting']%>">
+
+<% if hexist['dialogues'].to_s.to_i > 0 %>
+<div id="ticked" class="blue">dialogue+<%=hash['dialogues']%></div>
+<%else%>
+<% if hash['dialogues'].to_s.to_i >0 %>
+<button type="button">dialogue+<%=hash['dialogues']%></button>
+<%else%>
+<button type="button">dialogue+0</button>
+<%end%>
+<%end%>
+</div><!--dialogue-->
+</td>
+
+<td>
+<div id="story" count-id="<%=hash['acting']%>">
+<% if hexist['story'].to_s.to_i > 0 %>
+<div id="ticked" class="blue">story+<%=hash['story']%></div>
+<%else%>
+<% if hash['story'].to_s.to_i >0 %>
+<button type="button">story+<%=hash['story']%></button>
+<%else%>
+<button type="button">story+0</button>
+<%end%>
+<%end%>
+</div><!--story-->
+</td>
+</tr>
+<tr>
+<td>
+<div id="direction" count-id="<%=hash['acting']%>">
+<% if hexist['direction'].to_s.to_i > 0 %>
+<div id="ticked" class="blue">direction+<%=hash['direction']%></div>
+<%else%>
+<% if hash['direction'].to_s.to_i >0%>
+<button type="button">direction+<%=hash['direction']%></button>
+<%else%>
+<button type="button">direction+0</button>
+<%end%>
+<%end%>
+</div><!--direction-->
+</td>
+
+<td>
+<div id="music" count-id="<%=hash['acting']%>">
+<% if hexist['music'].to_s.to_i > 0 %>
+<div id="ticked" class="blue">music+<%=hash['music']%></div>
+<%else%>
+<% if hash['music'].to_s.to_i > 0 %>
+<button type="button">muisc+<%=hash['music']%></button>
+<%else%>
+<button type="button">music+0</button>
+<%end%>
+<%end%>
+</div><!--music-->
+</td>
+<td>
+<div id="editing" count-id="<%=hash['acting']%>">
+<% if hexist['editing'].to_s.to_i > 0 %>
+<div id="ticked" class="blue">editing+<%=hash['editing']%></div>
+<%else%>
+<% if hash['editing'].to_s.to_i > 0%>
+<button type="button">editing+<%=hash['editing']%></button>
+<%else%>
+<button type="button">editing+0</button>
+<%end%>
+<%end%>
+</div><!--editing-->
+</td>
+</tr>
+</table>
+<!--
+</div><!--review controls-->
+
+</div><!--review-->
+</div><!--head4-->
+
+</div><!--video_banner-->
+
+<div id='videop_review_error'></div>
+<div id='videop_description'>
+<div id='heading'>Description</div>
+<div id='content'>
+<%= video.description %>
+</div><!--content-->
+</div><!--description-->
+
+
+
+<div id="video_comments">
+
+<div id="comment_list" style="display: block; ">
+<div id="comment_error"></div>
+
+<div id="comment_user">
+    <input tabindex="0" type="text" name="comment_user_add">
+</div>
+
+
+<%count=video.comments.count%>
+<%limit=0%>
+<% video.comments.each do |t| %>
+<%count=count-1%>
+<%limit=limit+1%>
+<% if count < 0 || limit > 50 %>
+<%break%>
+<%end%>
+
+<div id="comment-<%=count%>">
+<img src="/assets/icon2.png" alt="g+_icon" height="50" width="50">
+<div id="comment"><%=t.content%></div>
+	</div>
+<%end%>
+
+</div><!--comment list-->
+</div><!--video_comments-->

@@ -1,0 +1,6 @@
+<%= form_for(my_current_user.mini_reviews.build,
+    remote: true) do |f| %>
+  <div><%= f.hidden_field :video_id, value: video.url_token %></div>
+  <div><%= f.hidden_field :category, value: category %></div>
+  <%= f.submit "#{category}+#{count}".capitalize %>
+<% end %>

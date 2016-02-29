@@ -1,0 +1,9 @@
+<div class="nav2">
+  <%= link_to "Uploads", @production, id: "upl" %>
+  <%= link_to "Competitions", production_competitions_path(@production), id: "comp" %>
+  <%= link_to "About", production_info_path(@production), id: "about" %>
+
+  <% if is_production_admin?(@production.id, my_current_user) %>
+    <%= link_to "+Admins", production_admins_path(@production), id: "add-admin" %>
+  <% end %>
+</div>

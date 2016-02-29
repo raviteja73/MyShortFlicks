@@ -1,0 +1,7 @@
+<%= provide(:title, @production.name) %>
+<% if my_signed_in? %>
+  <% if is_production_admin?(@production, my_current_user) %>
+    <%= link_to "Add Video", new_video_path, class: "start-new-prod" %>
+  <% end %>
+<% end %>
+<%= render "shared/show_videos_paginate" %>

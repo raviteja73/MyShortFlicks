@@ -1,0 +1,23 @@
+#users-show #info,
+#users-favourites #fav,
+#productions-show #upl,
+#productions-competitions #comp,
+#productions-info #about,
+#productions-admins #add-admin,
+#competitions-show #info,
+#competitions-awards #awards,
+#competitions-applied_videos #comp_app_vid,
+#competitions-applications #appl,
+#competitions-index #run,
+#competitions-yet_to_start #yetstart,
+#competitions-ended #ended,
+#pages-index #trend,
+#pages-recent_videos #recent,
+#pages-shuffle #shuffle,
+#pages-production_videos #production_vid,
+#pages-discover #filt,
+#pages-hall_of_fame #hof
+{
+    background-color: $website-blue;
+    color: $white;
+}

@@ -1,0 +1,93 @@
+<p id="searchresults">
+<%user=[]%>
+<%competition=[]%>
+<%production=[]%>
+<%video=[]%>
+
+
+
+<%if @results.count==0%>
+
+<span class="category not-found " >Results not found</span>
+<span class="not-found">We looked everywhere(honest)</span>
+<%end%>
+
+
+<%@results.each do |v|%>
+
+<% if v.class.name=='User' %>
+<%user<<v%>
+<%elsif v.class.name=='Video'%>
+<%video<<v %>
+<%elsif v.class.name=='Production'%>
+<%production<<v %>
+<%elsif v.class.name=='Competition'%>
+<%competition << v %>
+<%end%>
+
+<%end%>
+
+<% if video.length > 0%>
+<!--<span class="category">Video</span>-->
+<%for index in 0 ... video.length %>
+<a href="/videos/<%=video[index].id%>">
+
+<img src="http://img.youtube.com/vi/<%=video[index].youtube_url%>/0.jpg" alt="" style="width:50px;height:50px;"/>
+<span class="searchheading">v<%=video[index].id%><%= video[index].title.truncate(25) if video[index].title%></span>
+<span><%=video[index].description.truncate(30) if video[index].description%></span>
+</a>
+<%end%>
+<%end%>	   
+
+<% if user.length > 0%>
+
+<!--<span class="category">User</span>-->
+<%for index in 0 ... user.length %>
+<a href="/users/<%=user[index].url_token%>">
+
+<img src="http://img.youtube.com/vi//0.jpg" alt="" style="width:50px;height:50px;"/>
+
+<span class="searchheading">u<%=user[index].id%><%=user[index].first_name.truncate(25) if user[index].first_name %> <%=user[index].last_name.truncate(12) if user[index].last_name%></span>
+<span><%=user[index].quote.truncate(30) if user[index].quote%></span>
+</a>
+<%end%>
+<%end%>	 
+
+<% if production.length > 0%>
+
+<!--<span class="category">Production</span>-->
+<%for index in 0 ... production.length %>
+<a href="/productions/<%=production[index].url_token%>">
+
+<img src="http://img.youtube.com/vi//0.jpg" alt="" style="width:50px;height:50px;"/>
+<span class="searchheading">p<%=production[index].name.truncate(25) if production[index].name%></span>
+<span><%=production[index].description.truncate(30) if production[index].description%></span>
+</a>
+<%end%>
+<%end%>	 
+
+<% if competition.length > 0%>
+
+<span class="category">Competition</span>
+<%for index in 0 ... competition.length %>
+<a href="Link">
+
+
+<img src="http://img.youtube.com/vi//0.jpg" alt="" style="width:50px;height:50px;"/>
+<span class="searchheading"><%=competition[index].name%></span>
+<span>poop of god</span>
+</a>
+<%end%>
+<%end%>	  
+
+<%if @results.count!=0%>
+<span class="seperator" id="searchresult-loadmore">Explore More</span><br class="break" />   
+<%end%>  			
+<script>
+//search load more
+$("#searchbar>#searchform>#suggestions>#searchresults>#searchresult-loadmore").on('click',function(data){
+	
+	searchoffset+=offsetValue;
+	lookup($("#searchbar > #searchform > #searchinput > input").val(),1);
+});
+</script>
